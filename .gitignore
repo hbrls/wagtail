@@ -90,3 +90,7 @@ ENV/
 
 .idea/
 .DS_Store
+
+appl/appl/settings/local.py
+
+media/*

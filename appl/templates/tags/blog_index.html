@@ -1,0 +1,16 @@
+{% load blog_tags wagtailcore_tags %}
+
+<h1><a href="{% pageurl parent %}">{{ parent.title }}</a></h1>
+
+<ul class="nav navbar-nav">
+  {% for menuitem in menuitems %}
+  <li class="{% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %}">
+    {% if menuitem.show_dropdown %}
+    <a href="{% pageurl menuitem %}">{{ menuitem.title }} <i class="caret"></i></a>
+    {% blog_children parent=menuitem %}
+    {% else %}
+    <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>

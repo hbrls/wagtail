@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}home-agreement{% endblock %}
+
+{% block content %}
+<div class="container agreement">
+  {{ page.body | richtext }}
+</div>
+{% endblock %}
