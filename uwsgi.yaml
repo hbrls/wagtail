@@ -1,0 +1,12 @@
+uwsgi:
+  pythonpath : /var/app
+  module : appl.wsgi
+  callable : application
+  http-socket : 0.0.0.0:3031
+  static-map: /favicon.ico=/var/app/static/favicon.ico
+  static-map: /static=/var/app/static
+  processes : 1
+  master : 1
+  uid: www-data
+  gid: www-data
+  pidfile : /tmp/app.pid
