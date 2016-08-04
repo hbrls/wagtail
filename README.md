@@ -9,7 +9,7 @@ Docker Image
 
 For most of the time, you will continue to install app-specific dependencies. So I left the `USER root` there. Before you start you final app, you should set it to `USER www-data`.
 
-`RUN sed "s/#logformat/$(cat /path/to/uwsgi-logformat.ini)/" /uwsgi.yaml` to use your customized logformat.
+`RUN sed "s/#logformat/$(cat /path/to/uwsgi-logformat.yaml)/" /uwsgi.yaml` to use your customized logformat.
 
 What is already in `appl`, the opinionated best practice?
 ==
