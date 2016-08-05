@@ -30,8 +30,6 @@ WORKDIR /var/app
 
 COPY app.conf /etc/supervisor/conf.d/app.conf
 
-VOLUME ["/var/app", "/var/log/supervisor"]
-
 EXPOSE 3031
 
 CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]

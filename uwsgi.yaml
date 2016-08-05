@@ -9,4 +9,4 @@ uwsgi:
   master : 1
   uid: www-data
   gid: www-data
-  pidfile : /tmp/app.pid
+  pidfile : /var/app/app.pid
