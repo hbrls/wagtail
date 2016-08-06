@@ -82,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django_settings_export.settings_export',
             ],
         },
     },
@@ -145,3 +146,9 @@ WAGTAIL_SITE_NAME = "appl"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://www.example.com'
+
+
+SETTINGS_EXPORT = [
+    'DEBUG',
+    'DJANGO_ENV',
+]
