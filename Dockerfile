@@ -15,8 +15,6 @@ RUN \
   locale-gen && \
   dpkg-reconfigure locales && \
   /usr/sbin/update-locale LANG=en_US.UTF-8 && \
-  apt-get install -y supervisor && \
-  sed -i 's/^\(\[supervisord\]\)$/\1\nnodaemon=true/' /etc/supervisor/supervisord.conf && \
   pip install uwsgi && \
   pip install -r requirements.txt && \
   rm -rf /var/lib/apt/lists/* && \
@@ -28,8 +26,6 @@ ENV LANGUAGE en_US.UTF-8
 
 WORKDIR /var/app
 
-COPY app.conf /etc/supervisor/conf.d/app.conf
-
 EXPOSE 3031
 
-CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+CMD ["/usr/local/bin/uwsgi", "-y", "/uwsgi.yaml"]
