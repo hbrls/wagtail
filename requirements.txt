@@ -1,5 +1,5 @@
 beautifulsoup4==4.5.0
-Django==1.9.8
+Django==1.10.3
 django-modelcluster==2.0
 django-settings-export==1.1.0
 django-taggit==0.18.3
@@ -11,5 +11,5 @@ Pillow==3.3.0
 pytz==2016.6.1
 six==1.10.0
 Unidecode==0.4.19
-wagtail==1.5.3
+wagtail==1.7
 Willow==0.3.1

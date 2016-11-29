@@ -5,7 +5,7 @@ Wagtail, the cms based on django.
 Docker Image
 ==
 
-    $ docker build -t hbrls/wagtail:0.0.3 .
+    $ docker build -t hbrls/wagtail:0.0.6 .
 
 What is already in `appl`, the opinionated best practice?
 ==
@@ -15,10 +15,10 @@ What is already in `appl`, the opinionated best practice?
        $ mysql> CREATE DATABASE wagtail CHARACTER SET utf8 COLLATE utf8_general_ci;
 
        $ wagtail start appl
-    
+
        $ python manage.py makemigrations
        $ python manage.py migrate.
-    
+
        $ python manage.py createsuperuser  # admin:admin:admin@example.com
 
 2.  Change the default home page to our own `~/home/models.IndexPage`.
@@ -27,7 +27,7 @@ What is already in `appl`, the opinionated best practice?
     2. 到 "设置 > 站点 > Root Page" 将默认首页设置为 `IndexPage`
 
 3. Add example of page/subpage hierarchy
-       
+
        Root
            Welcome to wagtail
            首页                 <- the in facto root
@@ -50,10 +50,10 @@ Conventions
 1. `~/templates` for templates.
 
 2. `~/static` is the *destination* of assets.
-       
+
 3. `DJANGO_ENV`: 'dev', 'sit', 'prod', ... to distinguish deploy environments.
 
-4. The code (e.g. `~/home/models.py`, `~/blog/models.py`) provide *Page Types* to be used. The structure (i.e. site map) is up to your settings from the admin panel. 
+4. The code (e.g. `~/home/models.py`, `~/blog/models.py`) provide *Page Types* to be used. The structure (i.e. site map) is up to your settings from the admin panel.
 
 4. You would be requested a bunch of *carefully-designed-hard-coded-pages*. Just list their empty classes in `~/home/models.py` (e.g. `About`) and do the hard code and admin panel settings.
 
