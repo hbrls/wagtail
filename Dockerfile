@@ -4,6 +4,7 @@ FROM python:3.5.2-slim
 ENV DEBIAN_FRONTEND=noninteractive
 
 COPY requirements.txt /
+COPY envfile /
 COPY uwsgi.yaml /
 
 RUN \

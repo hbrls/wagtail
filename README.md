@@ -5,7 +5,7 @@ Wagtail, the cms based on django.
 Docker Image
 ==
 
-    $ docker build -t hbrls/wagtail:0.0.6 .
+    $ docker build -t hbrls/wagtail:{version} .
 
 What is already in `appl`, the opinionated best practice?
 ==
