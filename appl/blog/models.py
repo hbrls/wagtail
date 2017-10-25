@@ -14,6 +14,8 @@ class BlogIndexPage(Page):
 
 
 class ArticlePage(Page):
+    keywords = models.CharField(max_length=250, null=True, blank=True)
+    description = models.CharField(max_length=250, null=True, blank=True)
     main_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -22,7 +24,7 @@ class ArticlePage(Page):
         related_name='+'
     )
     date = models.DateField("Post date")
-    intro = models.CharField(max_length=250)
+    intro = models.CharField(max_length=250, null=True, blank=True)
     body = RichTextField(blank=True)
 
     search_fields = Page.search_fields + [
@@ -31,8 +33,10 @@ class ArticlePage(Page):
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('date'),
+        FieldPanel('keywords'),
+        FieldPanel('description'),
         ImageChooserPanel('main_image'),
+        FieldPanel('date'),
         FieldPanel('intro'),
         FieldPanel('body'),
     ]

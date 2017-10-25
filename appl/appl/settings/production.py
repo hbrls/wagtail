@@ -25,4 +25,7 @@ DATABASES = {
 }
 
 
-ALLOWED_HOSTS = ['wagtail.example.com']
+ALLOWED_HOSTS = [
+    'www.wagtailexample.com',
+    'm.wagtailexample.com',
+]

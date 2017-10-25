@@ -18,15 +18,18 @@
 
   <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 
-  {% block cssjs %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/appl.css' %}">
-  <script type="text/javascript" src="{% static 'js/appl.js' %}"></script>
+  {% block vcss %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/vendor/bootstrap.css' %}">
   {% endblock %}
 
   {% block css %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
   {% block content %}{% endblock %}
+
+  {% block vjs %}
+  <script type="text/javascript" src="{% static 'js/vendor/jquery.js' %}"></script>
+  {% endblock %}
 
   {% block js %}{% endblock %}
 </body>

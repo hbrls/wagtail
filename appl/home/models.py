@@ -27,14 +27,3 @@ class WhateverPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="whatever")
     ]
-
-
-class AgreementPage(Page):
-    body = RichTextField(blank=True)
-
-    content_panels = Page.content_panels + [
-        FieldPanel('body', classname="agreement")
-    ]
-
-    class Meta:
-        verbose_name = "用户协议"

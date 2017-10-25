@@ -12,14 +12,14 @@ What is already in `appl`, the opinionated best practice?
 
 1. Initialized database
 
-       $ mysql> CREATE DATABASE wagtail CHARACTER SET utf8 COLLATE utf8_general_ci;
+       $ mysql> CREATE DATABASE wagtailexample CHARACTER SET utf8 COLLATE utf8_general_ci;
 
        $ wagtail start appl
 
        $ python manage.py makemigrations
-       $ python manage.py migrate.
+       $ python manage.py migrate
 
-       $ python manage.py createsuperuser  # admin:admin:admin@example.com
+       $ python manage.py createsuperuser  # wagtail:wagtail, wagtail@wagtailexample.com
 
 2.  Change the default home page to our own `~/home/models.IndexPage`.
 
@@ -65,3 +65,17 @@ References
 1. https://github.com/apihackers/docker-wagtail
 2. [Official: Your first Wagtail site](http://docs.wagtail.io/en/latest/getting_started/tutorial.html)
 3. [Official: Wagtail demo project](https://github.com/torchbox/wagtaildemo)
+
+CHANGELOG
+==
+
+1.7 -> 1.12.2
+--
+
+```sql
+ALTER TABLE wagtailexample.wagtailcore_pageviewrestriction ADD restriction_type VARCHAR(20) DEFAULT 'password' NULL;
+ALTER TABLE wagtailexample.wagtailusers_userprofile ADD preferred_language VARCHAR(10) NULL;
+ALTER TABLE wagtailexample.wagtailcore_page ADD last_published_at DATETIME(6) NULL;
+ALTER TABLE wagtailexample.wagtailcore_page ADD live_revision_id INT(11) NULL;
+ALTER TABLE wagtailexample.wagtailcore_page ADD draft_title VARCHAR(255) NULL;
+```
