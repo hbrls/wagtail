@@ -13,6 +13,9 @@ What is already in `appl`, the opinionated best practice?
 1. Initialized database
 
        $ mysql> CREATE DATABASE wagtailexample CHARACTER SET utf8 COLLATE utf8_general_ci;
+       $ mysql> CREATE USER 'wagtailexample'@'%' IDENTIFIED BY 'wagtailexample';
+       $ mysql> GRANT ALL PRIVILEGES ON wagtailexample.* TO 'wagtailexample'@'%'
+       $ mysql> FLUSH PRIVILEGES;
 
        $ wagtail start appl
 
@@ -20,6 +23,8 @@ What is already in `appl`, the opinionated best practice?
        $ python manage.py migrate
 
        $ python manage.py createsuperuser  # wagtail:wagtail, wagtail@wagtailexample.com
+
+       $ python manage.py collectstatic
 
 2.  Change the default home page to our own `~/home/models.IndexPage`.
 

@@ -11,3 +11,7 @@
 .listing select + span:after {
   font-size: 2.5em !important;
 }
+
+.page-permissions-listing .admin_page_chooser .field-content {
+  width: 100%;
+}

@@ -21,7 +21,7 @@ function escapeHtml(text) {
     });
 }
 
-function initTagField(id, autocompleteUrl) {
+function initTagField(id, autocompleteUrl, allowSpaces) {
     $('#' + id).tagit({
         autocomplete: {source: autocompleteUrl},
         preprocessTag: function(val) {
@@ -32,7 +32,9 @@ function initTagField(id, autocompleteUrl) {
             }
 
             return val;
-        }
+        },
+
+        allowSpaces: allowSpaces
     });
 }
 
@@ -45,45 +47,32 @@ function initTagField(id, autocompleteUrl) {
  *  - formSelector - A CSS selector to select the form to apply this check to.
  *
  *  - options - An object for passing in options. Possible options are:
- *    - ignoredButtonsSelector - A CSS selector to find buttons to ignore within
- *      the form. If the navigation was triggered by one of these buttons, The
- *      check will be ignored. defaults to: input[type="submit"].
  *    - confirmationMessage - The message to display in the prompt.
  *    - alwaysDirty - When set to true the form will always be considered dirty,
  *      prompting the user even when nothing has been changed.
 */
 
-var dirtyFormCheckIsActive = true;
-
 function enableDirtyFormCheck(formSelector, options) {
     var $form = $(formSelector);
-    var $ignoredButtons = $form.find(
-        options.ignoredButtonsSelector || 'input[type="submit"],button[type="submit"]'
-    );
     var confirmationMessage = options.confirmationMessage || ' ';
     var alwaysDirty = options.alwaysDirty || false;
     var initialData = $form.serialize();
+    var formSubmitted = false;
+
+    $form.submit(function() {
+        formSubmitted = true;
+    });
 
     window.addEventListener('beforeunload', function(event) {
-        // Ignore if the user clicked on an ignored element
-        var triggeredByIgnoredButton = false;
-        var $trigger = $(event.explicitOriginalTarget || document.activeElement);
+        var displayConfirmation = (
+            !formSubmitted && (alwaysDirty || $form.serialize() != initialData)
+        );
 
-        $ignoredButtons.each(function() {
-            if ($(this).is($trigger)) {
-                triggeredByIgnoredButton = true;
-            }
-        });
-
-        if (dirtyFormCheckIsActive && !triggeredByIgnoredButton && (alwaysDirty || $form.serialize() != initialData)) {
+        if (displayConfirmation) {
             event.returnValue = confirmationMessage;
             return confirmationMessage;
         }
     });
-}
-
-function disableDirtyFormCheck() {
-    dirtyFormCheckIsActive = false;
 }
 
 $(function() {
@@ -100,12 +89,18 @@ $(function() {
         }
     });
 
+    // Enable toggle to open/close user settings
+    $(document).on('click', '#account-settings', function() {
+        $('#footer').toggleClass('footer-open');
+        $(this).find('em').toggleClass('icon-arrow-down-after icon-arrow-up-after');
+    });
+
     // Resize nav to fit height of window. This is an unimportant bell/whistle to make it look nice
     var fitNav = function() {
         $('.nav-wrapper').css('min-height', $(window).height());
         $('.nav-main').each(function() {
             var thisHeight = $(this).height();
-            var footerHeight = $('.footer', $(this)).height();
+            var footerHeight = $('#footer', $(this)).height();
         });
     };
 
@@ -114,6 +109,55 @@ $(function() {
     $(window).resize(function() {
         fitNav();
     });
+
+    // Logo interactivity
+    function initLogo() {
+        var sensitivity = 8; // the amount of times the user must stroke the wagtail to trigger the animation
+
+        var $logoContainer = $('.wagtail-logo-container__desktop');
+        var mouseX = 0;
+        var lastMouseX = 0;
+        var dir = '';
+        var lastDir = '';
+        var dirChangeCount = 0;
+
+        function enableWag() {
+            $logoContainer.removeClass('logo-serious').addClass('logo-playful');
+        }
+
+        function disableWag() {
+            $logoContainer.removeClass('logo-playful').addClass('logo-serious');
+        }
+
+        $logoContainer.mousemove(function(event) {
+            mouseX = event.pageX;
+
+            if (mouseX > lastMouseX) {
+                dir = 'r';
+            } else if (mouseX < lastMouseX) {
+                dir = 'l';
+            }
+
+            if (dir != lastDir && lastDir != '') {
+                dirChangeCount += 1;
+            }
+
+            if (dirChangeCount > sensitivity) {
+                enableWag();
+            }
+
+            lastMouseX = mouseX;
+            lastDir = dir;
+        });
+
+        $logoContainer.mouseleave(function() {
+            dirChangeCount = 0;
+            disableWag();
+        });
+
+        disableWag();
+    }
+    initLogo();
 
     // Enable nice focus effects on all fields. This enables help text on hover.
     $(document).on('focus mouseover', 'input,textarea,select', function() {
@@ -175,7 +219,7 @@ $(function() {
         var searchCurrentIndex = 0;
         var searchNextIndex = 0;
 
-        $(window.headerSearch.termInput).on('input', function() {
+        $(window.headerSearch.termInput).on('keyup cut paste', function() {
             clearTimeout($.data(this, 'timer'));
             var wait = setTimeout(search, 200);
             $(this).data('timer', wait);
@@ -221,12 +265,20 @@ $(function() {
         var $self = $(this);
         var $replacementElem = $('em', $self);
         var reEnableAfter = 30;
-        var dataName = 'disabledtimeout'
+        var dataName = 'disabledtimeout';
 
-        // Check the form this submit button belongs to (if any)
+        window.cancelSpinner = function() {
+            $self.prop('disabled', '').removeData(dataName).removeClass('button-longrunning-active');
+
+            if ($self.data('clicked-text')) {
+                $replacementElem.text($self.data('original-text'));
+            }
+        };
+
+        // If client-side validation is active on this form, and is going to block submission of the
+        // form, don't activate the spinner
         var form = $self.closest('form').get(0);
-        if (form && form.checkValidity && (form.checkValidity() == false)) {
-                 // ^ Check form.checkValidity returns something as it may not be browser compatible
+        if (form && form.checkValidity && !form.noValidate && (!form.checkValidity())) {
             return;
         }
 
@@ -240,11 +292,7 @@ $(function() {
                 $self.data(dataName, setTimeout(function() {
                     clearTimeout($self.data(dataName));
 
-                    $self.prop('disabled', '').removeData(dataName).removeClass('button-longrunning-active')
-
-                    if ($self.data('clicked-text')) {
-                        $replacementElem.text($self.data('original-text'));
-                    }
+                    cancelSpinner();
 
                 }, reEnableAfter * 1000));
 
@@ -471,6 +519,3 @@ wagtail = (function(document, window, wagtail) {
     return wagtail;
 
 })(document, window, wagtail);
-
-
-

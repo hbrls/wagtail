@@ -8,10 +8,6 @@ document.addEventListener('DOMContentLoaded', function userBar(e) {
     var hasTouch = 'ontouchstart' in window;
     var clickEvent = 'click';
 
-    if (!'classList' in userbar) {
-        return;
-    }
-
     if (hasTouch) {
         userbar.classList.add('touch');
 
@@ -19,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function userBar(e) {
         // in accordance with: https://hacks.mozilla.org/2013/04/detecting-touch-its-the-why-not-the-how/
         trigger.addEventListener('touchend', function preventSimulatedClick(e) {
             e.preventDefault();
-            toggleUserbar();
+            toggleUserbar(e);
         });
 
     } else {
