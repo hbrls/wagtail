@@ -12,7 +12,13 @@ class IndexPage(Page):
     page_ptr = models.OneToOneField(Page, parent_link=True, related_name='+')
 
     class Meta:
-        verbose_name = "首页"
+        verbose_name = "PC 首页"
+
+
+class MobileIndexPage(Page):
+    # an example of mobile page
+    class Meta:
+        verbose_name = "Mobile 首页"
 
 
 class AboutPage(Page):
