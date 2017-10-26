@@ -9,6 +9,7 @@ DEBUG = True
 DJANGO_ENV = 'dev'
 
 
+# comment out these lines before you run collectstatic
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
     os.path.join(BASE_DIR, 'static'),
