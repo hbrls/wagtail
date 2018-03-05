@@ -9,7 +9,7 @@ COPY uwsgi.yaml /
 
 RUN \
   apt-get update && \
-  apt-get install -y build-essential python-dev curl locales && \
+  apt-get install -y build-essential python-dev libpcre3 libpcre3-dev curl locales && \
   apt-get install -y libmysqlclient-dev && \
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen  && \
   echo "zh_CN.UTF-8 UTF-8" >> /etc/locale.gen  && \
@@ -19,7 +19,8 @@ RUN \
   pip install uwsgi && \
   pip install -r requirements.txt && \
   rm -rf /var/lib/apt/lists/* && \
-  mkdir -p /var/app && chown -R www-data:www-data /var/app
+  mkdir -p /var/app && chown -R www-data:www-data /var/app && \
+  mkdir -p /data/log && chown -R www-data:www-data /data/log
 
 ENV \
  LC_ALL en_US.UTF-8 \
@@ -27,6 +28,8 @@ ENV \
  LANGUAGE en_US.UTF-8
 
 WORKDIR /var/app
+
+# USER www-data
 
 EXPOSE 3031
 

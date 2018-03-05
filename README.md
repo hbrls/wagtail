@@ -7,6 +7,10 @@ Docker Image
 
     $ docker build -t hbrls/wagtail:{version} .
 
+For most of the time, you will continue to install app-specific dependencies. So I left the `USER root` there. Before you start you final app, you should set it to `USER www-data`.
+
+`RUN sed "s/#logformat/$(cat /path/to/uwsgi-logformat.ini)/" /uwsgi.yaml` to use your customized logformat.
+
 What is already in `appl`, the opinionated best practice?
 ==
 
@@ -70,6 +74,7 @@ References
 1. https://github.com/apihackers/docker-wagtail
 2. [Official: Your first Wagtail site](http://docs.wagtail.io/en/latest/getting_started/tutorial.html)
 3. [Official: Wagtail demo project](https://github.com/torchbox/wagtaildemo)
+4. [Official: Formatting uWSGI requests logs](http://uwsgi-docs.readthedocs.io/en/latest/LogFormat.html)
 
 CHANGELOG
 ==

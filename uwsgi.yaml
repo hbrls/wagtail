@@ -1,5 +1,18 @@
 # http://uwsgi-docs.readthedocs.io/en/latest/ThingsToKnow.html
 uwsgi:
+  processes: 8
+  threads: 256
+  enable-threads: true
+  thunder-lock: true
+  master: true
+  uid: www-data
+  gid: www-data
+  pidfile: /var/app/app.pid
+  logto: /data/log/sys.log
+  log-x-forwarded-for: true
+  log-date: %%Y-%%m-%%d %%H:%%M:%%S.000
+  logformat-strftime: true
+  #logformat
   pythonpath: /var/app
   module: appl.wsgi
   callable: application
@@ -9,10 +22,3 @@ uwsgi:
   for-readline: /envfile
     env: %(_)
   endfor:
-  processes: 8
-  threads: 256
-  enable-threads: 1
-  master: 1
-  uid: www-data
-  gid: www-data
-  pidfile: /var/app/app.pid
