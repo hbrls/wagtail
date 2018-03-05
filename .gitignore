@@ -90,6 +90,7 @@ ENV/
 
 .idea/
 .DS_Store
+appl/app.pid
 
 appl/appl/settings/local.py
 
