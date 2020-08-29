@@ -98,3 +98,6 @@ ALTER TABLE wagtailexample.wagtailcore_page ADD draft_title VARCHAR(255) NULL;
 1. [Pillow 6.2.2](https://pillow.readthedocs.io/en/latest/installation.html#notes) for python 3.8+
 2. Wagtail/Django renamed or deprecated contrib packages; [examples](https://github.com/wagtail/wagtail/blob/v2.6.3/docs/advanced_topics/settings.rst)
 3. Django breaking changes [1](https://docs.djangoproject.com/en/3.1/releases/1.9/#assignment-tag), [2](https://github.com/wagtail/django-modelcluster/issues/89)
+
+-> 2.7.4 (CVE)
+--
