@@ -1,5 +1,4 @@
-# http://github.com/hbrls/docker-django-app
-FROM python:3.5.2-slim
+FROM python:3.8.1-slim-buster
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -10,7 +9,7 @@ COPY uwsgi.yaml /
 RUN \
   apt-get update && \
   apt-get install -y build-essential python-dev libpcre3 libpcre3-dev curl locales && \
-  apt-get install -y libmysqlclient-dev && \
+  apt-get install -y default-libmysqlclient-dev && \
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen  && \
   echo "zh_CN.UTF-8 UTF-8" >> /etc/locale.gen  && \
   locale-gen && \
