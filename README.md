@@ -16,19 +16,21 @@ What is already in `appl`, the opinionated best practice?
 
 1. Initialized database
 
-       $ mysql> CREATE DATABASE wagtailexample CHARACTER SET utf8 COLLATE utf8_general_ci;
-       $ mysql> CREATE USER 'wagtailexample'@'%' IDENTIFIED BY 'wagtailexample';
-       $ mysql> GRANT ALL PRIVILEGES ON wagtailexample.* TO 'wagtailexample'@'%'
-       $ mysql> FLUSH PRIVILEGES;
-
-       $ wagtail start appl
-
-       $ python manage.py makemigrations
-       $ python manage.py migrate
-
-       $ python manage.py createsuperuser  # wagtail:wagtail, wagtail@wagtailexample.com
-
-       $ python manage.py collectstatic
+    ```bash
+    $ mysql> CREATE DATABASE wagtailexample CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+    $ mysql> CREATE USER 'wagtailexample'@'%' IDENTIFIED BY 'wagtailexample';
+    $ mysql> GRANT ALL PRIVILEGES ON wagtailexample.* TO 'wagtailexample'@'%'
+    $ mysql> FLUSH PRIVILEGES;
+    
+    $ wagtail start appl
+    
+    $ python manage.py makemigrations
+    $ python manage.py migrate
+    
+    $ python manage.py createsuperuser  # wagtail:wagtail, wagtail@wagtailexample.com
+    
+    $ python manage.py collectstatic
+    ```
 
 2.  Change the default home page to our own `~/home/models.IndexPage`.
 
@@ -79,7 +81,7 @@ References
 CHANGELOG
 ==
 
-1.7 -> 1.12.2
+1.7 -> 1.12.2 -> 1.13.4
 --
 
 ```sql

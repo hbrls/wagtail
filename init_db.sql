@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.11, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.29, for Linux (x86_64)
 --
--- Host: mysql    Database: wagtail
+-- Host: 127.0.0.1    Database: wagtail
 -- ------------------------------------------------------
--- Server version	5.7.11
+-- Server version	5.7.24
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,7 +27,7 @@ CREATE TABLE `auth_group` (
   `name` varchar(80) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -56,7 +56,7 @@ CREATE TABLE `auth_group_permissions` (
   KEY `auth_group_permissi_permission_id_84c5c92e_fk_auth_permission_id` (`permission_id`),
   CONSTRAINT `auth_group_permissi_permission_id_84c5c92e_fk_auth_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,7 +84,7 @@ CREATE TABLE `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permissi_content_type_id_2f476e4b_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `auth_permission` (
 
 LOCK TABLES `auth_permission` WRITE;
 /*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
-INSERT INTO `auth_permission` VALUES (1,'Can add image',2,'add_image'),(2,'Can change image',2,'change_image'),(3,'Can delete image',2,'delete_image'),(4,'Can access Wagtail admin',3,'access_admin'),(5,'Can add document',4,'add_document'),(6,'Can change document',4,'change_document'),(7,'Can delete document',4,'delete_document'),(8,'Can add 首页',5,'add_indexpage'),(9,'Can change 首页',5,'change_indexpage'),(10,'Can delete 首页',5,'delete_indexpage'),(11,'Can add 关于我们',6,'add_aboutpage'),(12,'Can change 关于我们',6,'change_aboutpage'),(13,'Can delete 关于我们',6,'delete_aboutpage'),(14,'Can add whatever page',7,'add_whateverpage'),(15,'Can change whatever page',7,'change_whateverpage'),(16,'Can delete whatever page',7,'delete_whateverpage'),(17,'Can add 用户协议',8,'add_agreementpage'),(18,'Can change 用户协议',8,'change_agreementpage'),(19,'Can delete 用户协议',8,'delete_agreementpage'),(20,'Can add 博客文章列表',9,'add_blogindexpage'),(21,'Can change 博客文章列表',9,'change_blogindexpage'),(22,'Can delete 博客文章列表',9,'delete_blogindexpage'),(23,'Can add 一篇博客文章',10,'add_articlepage'),(24,'Can change 一篇博客文章',10,'change_articlepage'),(25,'Can delete 一篇博客文章',10,'delete_articlepage'),(26,'Can add form submission',11,'add_formsubmission'),(27,'Can change form submission',11,'change_formsubmission'),(28,'Can delete form submission',11,'delete_formsubmission'),(29,'Can add redirect',12,'add_redirect'),(30,'Can change redirect',12,'change_redirect'),(31,'Can delete redirect',12,'delete_redirect'),(32,'Can add embed',13,'add_embed'),(33,'Can change embed',13,'change_embed'),(34,'Can delete embed',13,'delete_embed'),(35,'Can add user profile',14,'add_userprofile'),(36,'Can change user profile',14,'change_userprofile'),(37,'Can delete user profile',14,'delete_userprofile'),(38,'Can add filter',15,'add_filter'),(39,'Can change filter',15,'change_filter'),(40,'Can delete filter',15,'delete_filter'),(41,'Can add rendition',16,'add_rendition'),(42,'Can change rendition',16,'change_rendition'),(43,'Can delete rendition',16,'delete_rendition'),(44,'Can add query',17,'add_query'),(45,'Can change query',17,'change_query'),(46,'Can delete query',17,'delete_query'),(47,'Can add Query Daily Hits',18,'add_querydailyhits'),(48,'Can change Query Daily Hits',18,'change_querydailyhits'),(49,'Can delete Query Daily Hits',18,'delete_querydailyhits'),(50,'Can add site',19,'add_site'),(51,'Can change site',19,'change_site'),(52,'Can delete site',19,'delete_site'),(53,'Can add page',1,'add_page'),(54,'Can change page',1,'change_page'),(55,'Can delete page',1,'delete_page'),(56,'Can add page revision',20,'add_pagerevision'),(57,'Can change page revision',20,'change_pagerevision'),(58,'Can delete page revision',20,'delete_pagerevision'),(59,'Can add group page permission',21,'add_grouppagepermission'),(60,'Can change group page permission',21,'change_grouppagepermission'),(61,'Can delete group page permission',21,'delete_grouppagepermission'),(62,'Can add page view restriction',22,'add_pageviewrestriction'),(63,'Can change page view restriction',22,'change_pageviewrestriction'),(64,'Can delete page view restriction',22,'delete_pageviewrestriction'),(65,'Can add collection',23,'add_collection'),(66,'Can change collection',23,'change_collection'),(67,'Can delete collection',23,'delete_collection'),(68,'Can add group collection permission',24,'add_groupcollectionpermission'),(69,'Can change group collection permission',24,'change_groupcollectionpermission'),(70,'Can delete group collection permission',24,'delete_groupcollectionpermission'),(71,'Can add Tag',25,'add_tag'),(72,'Can change Tag',25,'change_tag'),(73,'Can delete Tag',25,'delete_tag'),(74,'Can add Tagged Item',26,'add_taggeditem'),(75,'Can change Tagged Item',26,'change_taggeditem'),(76,'Can delete Tagged Item',26,'delete_taggeditem'),(77,'Can add log entry',27,'add_logentry'),(78,'Can change log entry',27,'change_logentry'),(79,'Can delete log entry',27,'delete_logentry'),(80,'Can add permission',28,'add_permission'),(81,'Can change permission',28,'change_permission'),(82,'Can delete permission',28,'delete_permission'),(83,'Can add group',29,'add_group'),(84,'Can change group',29,'change_group'),(85,'Can delete group',29,'delete_group'),(86,'Can add user',30,'add_user'),(87,'Can change user',30,'change_user'),(88,'Can delete user',30,'delete_user'),(89,'Can add content type',31,'add_contenttype'),(90,'Can change content type',31,'change_contenttype'),(91,'Can delete content type',31,'delete_contenttype'),(92,'Can add session',32,'add_session'),(93,'Can change session',32,'change_session'),(94,'Can delete session',32,'delete_session');
+INSERT INTO `auth_permission` VALUES (1,'Can add image',2,'add_image'),(2,'Can change image',2,'change_image'),(3,'Can delete image',2,'delete_image'),(4,'Can access Wagtail admin',3,'access_admin'),(5,'Can add document',4,'add_document'),(6,'Can change document',4,'change_document'),(7,'Can delete document',4,'delete_document'),(8,'Can add 首页',5,'add_indexpage'),(9,'Can change 首页',5,'change_indexpage'),(10,'Can delete 首页',5,'delete_indexpage'),(11,'Can add 关于我们',6,'add_aboutpage'),(12,'Can change 关于我们',6,'change_aboutpage'),(13,'Can delete 关于我们',6,'delete_aboutpage'),(14,'Can add whatever page',7,'add_whateverpage'),(15,'Can change whatever page',7,'change_whateverpage'),(16,'Can delete whatever page',7,'delete_whateverpage'),(17,'Can add 用户协议',8,'add_agreementpage'),(18,'Can change 用户协议',8,'change_agreementpage'),(19,'Can delete 用户协议',8,'delete_agreementpage'),(20,'Can add 博客文章列表',9,'add_blogindexpage'),(21,'Can change 博客文章列表',9,'change_blogindexpage'),(22,'Can delete 博客文章列表',9,'delete_blogindexpage'),(23,'Can add 一篇博客文章',10,'add_articlepage'),(24,'Can change 一篇博客文章',10,'change_articlepage'),(25,'Can delete 一篇博客文章',10,'delete_articlepage'),(26,'Can add form submission',11,'add_formsubmission'),(27,'Can change form submission',11,'change_formsubmission'),(28,'Can delete form submission',11,'delete_formsubmission'),(29,'Can add redirect',12,'add_redirect'),(30,'Can change redirect',12,'change_redirect'),(31,'Can delete redirect',12,'delete_redirect'),(32,'Can add embed',13,'add_embed'),(33,'Can change embed',13,'change_embed'),(34,'Can delete embed',13,'delete_embed'),(35,'Can add user profile',14,'add_userprofile'),(36,'Can change user profile',14,'change_userprofile'),(37,'Can delete user profile',14,'delete_userprofile'),(38,'Can add filter',15,'add_filter'),(39,'Can change filter',15,'change_filter'),(40,'Can delete filter',15,'delete_filter'),(41,'Can add rendition',16,'add_rendition'),(42,'Can change rendition',16,'change_rendition'),(43,'Can delete rendition',16,'delete_rendition'),(44,'Can add query',17,'add_query'),(45,'Can change query',17,'change_query'),(46,'Can delete query',17,'delete_query'),(47,'Can add Query Daily Hits',18,'add_querydailyhits'),(48,'Can change Query Daily Hits',18,'change_querydailyhits'),(49,'Can delete Query Daily Hits',18,'delete_querydailyhits'),(50,'Can add site',19,'add_site'),(51,'Can change site',19,'change_site'),(52,'Can delete site',19,'delete_site'),(53,'Can add page',1,'add_page'),(54,'Can change page',1,'change_page'),(55,'Can delete page',1,'delete_page'),(56,'Can add page revision',20,'add_pagerevision'),(57,'Can change page revision',20,'change_pagerevision'),(58,'Can delete page revision',20,'delete_pagerevision'),(59,'Can add group page permission',21,'add_grouppagepermission'),(60,'Can change group page permission',21,'change_grouppagepermission'),(61,'Can delete group page permission',21,'delete_grouppagepermission'),(62,'Can add page view restriction',22,'add_pageviewrestriction'),(63,'Can change page view restriction',22,'change_pageviewrestriction'),(64,'Can delete page view restriction',22,'delete_pageviewrestriction'),(65,'Can add collection',23,'add_collection'),(66,'Can change collection',23,'change_collection'),(67,'Can delete collection',23,'delete_collection'),(68,'Can add group collection permission',24,'add_groupcollectionpermission'),(69,'Can change group collection permission',24,'change_groupcollectionpermission'),(70,'Can delete group collection permission',24,'delete_groupcollectionpermission'),(71,'Can add Tag',25,'add_tag'),(72,'Can change Tag',25,'change_tag'),(73,'Can delete Tag',25,'delete_tag'),(74,'Can add Tagged Item',26,'add_taggeditem'),(75,'Can change Tagged Item',26,'change_taggeditem'),(76,'Can delete Tagged Item',26,'delete_taggeditem'),(77,'Can add log entry',27,'add_logentry'),(78,'Can change log entry',27,'change_logentry'),(79,'Can delete log entry',27,'delete_logentry'),(80,'Can add permission',28,'add_permission'),(81,'Can change permission',28,'change_permission'),(82,'Can delete permission',28,'delete_permission'),(83,'Can add group',29,'add_group'),(84,'Can change group',29,'change_group'),(85,'Can delete group',29,'delete_group'),(86,'Can add user',30,'add_user'),(87,'Can change user',30,'change_user'),(88,'Can delete user',30,'delete_user'),(89,'Can add content type',31,'add_contenttype'),(90,'Can change content type',31,'change_contenttype'),(91,'Can delete content type',31,'delete_contenttype'),(92,'Can add session',32,'add_session'),(93,'Can change session',32,'change_session'),(94,'Can delete session',32,'delete_session'),(95,'Can add Mobile 首页',33,'add_mobileindexpage'),(96,'Can change Mobile 首页',33,'change_mobileindexpage'),(97,'Can delete Mobile 首页',33,'delete_mobileindexpage'),(98,'Can add collection view restriction',34,'add_collectionviewrestriction'),(99,'Can change collection view restriction',34,'change_collectionviewrestriction'),(100,'Can delete collection view restriction',34,'delete_collectionviewrestriction');
 /*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +109,7 @@ CREATE TABLE `auth_user` (
   `password` varchar(128) NOT NULL,
   `last_login` datetime(6) DEFAULT NULL,
   `is_superuser` tinyint(1) NOT NULL,
-  `username` varchar(30) NOT NULL,
+  `username` varchar(150) NOT NULL,
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
   `email` varchar(254) NOT NULL,
@@ -118,7 +118,7 @@ CREATE TABLE `auth_user` (
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,7 +127,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$24000$yTiH2hueTK5J$hG1kfXBLqybvQxPp9OepBJa5RBhmzzkvomdvwNoqm4U=','2016-08-04 02:23:31.327463',1,'admin','','','admin@example.com',1,1,'2016-08-04 02:21:10.537355');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$36000$Ohd9XyFGD2s4$g3lMgc/uKCIEnIz/+CojJDgQcPm0Lr7gbgKNNlFu/1s=','2020-08-29 08:58:46.970001',1,'admin','','','admin@example.com',1,1,'2016-08-04 02:21:10.537355');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +147,7 @@ CREATE TABLE `auth_user_groups` (
   KEY `auth_user_groups_group_id_97559544_fk_auth_group_id` (`group_id`),
   CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
   CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +175,7 @@ CREATE TABLE `auth_user_user_permissions` (
   KEY `auth_user_user_perm_permission_id_1fbb5f2c_fk_auth_permission_id` (`permission_id`),
   CONSTRAINT `auth_user_user_perm_permission_id_1fbb5f2c_fk_auth_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,15 +196,14 @@ DROP TABLE IF EXISTS `blog_articlepage`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `blog_articlepage` (
   `page_ptr_id` int(11) NOT NULL,
+  `keywords` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `date` date NOT NULL,
-  `intro` varchar(250) NOT NULL,
-  `body` longtext NOT NULL,
+  `intro` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `main_image_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`page_ptr_id`),
-  KEY `blog_articlepag_main_image_id_b5dc0670_fk_wagtailimages_image_id` (`main_image_id`),
-  CONSTRAINT `blog_articlepag_main_image_id_b5dc0670_fk_wagtailimages_image_id` FOREIGN KEY (`main_image_id`) REFERENCES `wagtailimages_image` (`id`),
-  CONSTRAINT `blog_articlepage_page_ptr_id_8c00473c_fk_wagtailcore_page_id` FOREIGN KEY (`page_ptr_id`) REFERENCES `wagtailcore_page` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`page_ptr_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +212,7 @@ CREATE TABLE `blog_articlepage` (
 
 LOCK TABLES `blog_articlepage` WRITE;
 /*!40000 ALTER TABLE `blog_articlepage` DISABLE KEYS */;
-INSERT INTO `blog_articlepage` VALUES (10,'2016-08-04','文章简介','<p>文章内容</p>',NULL);
+INSERT INTO `blog_articlepage` VALUES (10,'','文章简介','2016-08-04','','<p>文章内容</p>',NULL);
 /*!40000 ALTER TABLE `blog_articlepage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,9 +225,8 @@ DROP TABLE IF EXISTS `blog_blogindexpage`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `blog_blogindexpage` (
   `page_ptr_id` int(11) NOT NULL,
-  PRIMARY KEY (`page_ptr_id`),
-  CONSTRAINT `blog_blogindexpage_page_ptr_id_d87c3ac2_fk_wagtailcore_page_id` FOREIGN KEY (`page_ptr_id`) REFERENCES `wagtailcore_page` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`page_ptr_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,7 +260,7 @@ CREATE TABLE `django_admin_log` (
   KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
   CONSTRAINT `django_admin__content_type_id_c4bce8eb_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,7 +286,7 @@ CREATE TABLE `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -297,7 +295,7 @@ CREATE TABLE `django_content_type` (
 
 LOCK TABLES `django_content_type` WRITE;
 /*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
-INSERT INTO `django_content_type` VALUES (27,'admin','logentry'),(29,'auth','group'),(28,'auth','permission'),(30,'auth','user'),(10,'blog','articlepage'),(9,'blog','blogindexpage'),(31,'contenttypes','contenttype'),(6,'home','aboutpage'),(8,'home','agreementpage'),(5,'home','indexpage'),(7,'home','whateverpage'),(32,'sessions','session'),(25,'taggit','tag'),(26,'taggit','taggeditem'),(3,'wagtailadmin','admin'),(23,'wagtailcore','collection'),(24,'wagtailcore','groupcollectionpermission'),(21,'wagtailcore','grouppagepermission'),(1,'wagtailcore','page'),(20,'wagtailcore','pagerevision'),(22,'wagtailcore','pageviewrestriction'),(19,'wagtailcore','site'),(4,'wagtaildocs','document'),(13,'wagtailembeds','embed'),(11,'wagtailforms','formsubmission'),(15,'wagtailimages','filter'),(2,'wagtailimages','image'),(16,'wagtailimages','rendition'),(12,'wagtailredirects','redirect'),(17,'wagtailsearch','query'),(18,'wagtailsearch','querydailyhits'),(14,'wagtailusers','userprofile');
+INSERT INTO `django_content_type` VALUES (27,'admin','logentry'),(29,'auth','group'),(28,'auth','permission'),(30,'auth','user'),(10,'blog','articlepage'),(9,'blog','blogindexpage'),(31,'contenttypes','contenttype'),(6,'home','aboutpage'),(8,'home','agreementpage'),(5,'home','indexpage'),(33,'home','mobileindexpage'),(7,'home','whateverpage'),(32,'sessions','session'),(25,'taggit','tag'),(26,'taggit','taggeditem'),(3,'wagtailadmin','admin'),(23,'wagtailcore','collection'),(34,'wagtailcore','collectionviewrestriction'),(24,'wagtailcore','groupcollectionpermission'),(21,'wagtailcore','grouppagepermission'),(1,'wagtailcore','page'),(20,'wagtailcore','pagerevision'),(22,'wagtailcore','pageviewrestriction'),(19,'wagtailcore','site'),(4,'wagtaildocs','document'),(13,'wagtailembeds','embed'),(11,'wagtailforms','formsubmission'),(15,'wagtailimages','filter'),(2,'wagtailimages','image'),(16,'wagtailimages','rendition'),(12,'wagtailredirects','redirect'),(17,'wagtailsearch','query'),(18,'wagtailsearch','querydailyhits'),(14,'wagtailusers','userprofile');
 /*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,7 +312,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -323,7 +321,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2016-08-04 02:20:45.621146'),(2,'auth','0001_initial','2016-08-04 02:20:46.286301'),(3,'admin','0001_initial','2016-08-04 02:20:46.444332'),(4,'admin','0002_logentry_remove_auto_add','2016-08-04 02:20:46.461706'),(5,'contenttypes','0002_remove_content_type_name','2016-08-04 02:20:46.582701'),(6,'auth','0002_alter_permission_name_max_length','2016-08-04 02:20:46.639212'),(7,'auth','0003_alter_user_email_max_length','2016-08-04 02:20:46.696750'),(8,'auth','0004_alter_user_username_opts','2016-08-04 02:20:46.711015'),(9,'auth','0005_alter_user_last_login_null','2016-08-04 02:20:46.770213'),(10,'auth','0006_require_contenttypes_0002','2016-08-04 02:20:46.774627'),(11,'auth','0007_alter_validators_add_error_messages','2016-08-04 02:20:46.787361'),(12,'taggit','0001_initial','2016-08-04 02:20:47.004682'),(13,'taggit','0002_auto_20150616_2121','2016-08-04 02:20:47.040610'),(14,'wagtailimages','0001_initial','2016-08-04 02:20:47.379263'),(15,'wagtailcore','0001_initial','2016-08-04 02:20:48.263232'),(16,'wagtailcore','0002_initial_data','2016-08-04 02:20:48.267641'),(17,'wagtailcore','0003_add_uniqueness_constraint_on_group_page_permission','2016-08-04 02:20:48.272345'),(18,'wagtailcore','0004_page_locked','2016-08-04 02:20:48.276652'),(19,'wagtailcore','0005_add_page_lock_permission_to_moderators','2016-08-04 02:20:48.280846'),(20,'wagtailcore','0006_add_lock_page_permission','2016-08-04 02:20:48.285161'),(21,'wagtailcore','0007_page_latest_revision_created_at','2016-08-04 02:20:48.289454'),(22,'wagtailcore','0008_populate_latest_revision_created_at','2016-08-04 02:20:48.294232'),(23,'wagtailcore','0009_remove_auto_now_add_from_pagerevision_created_at','2016-08-04 02:20:48.304795'),(24,'wagtailcore','0010_change_page_owner_to_null_on_delete','2016-08-04 02:20:48.309215'),(25,'wagtailcore','0011_page_first_published_at','2016-08-04 02:20:48.313590'),(26,'wagtailcore','0012_extend_page_slug_field','2016-08-04 02:20:48.318032'),(27,'wagtailcore','0013_update_golive_expire_help_text','2016-08-04 02:20:48.322360'),(28,'wagtailcore','0014_add_verbose_name','2016-08-04 02:20:48.326627'),(29,'wagtailcore','0015_add_more_verbose_names','2016-08-04 02:20:48.330710'),(30,'wagtailcore','0016_change_page_url_path_to_text_field','2016-08-04 02:20:48.335092'),(31,'wagtailimages','0002_initial_data','2016-08-04 02:20:48.374655'),(32,'wagtailimages','0003_fix_focal_point_fields','2016-08-04 02:20:48.449533'),(33,'wagtailimages','0004_make_focal_point_key_not_nullable','2016-08-04 02:20:48.533296'),(34,'wagtailimages','0005_make_filter_spec_unique','2016-08-04 02:20:48.572710'),(35,'wagtailimages','0006_add_verbose_names','2016-08-04 02:20:48.698810'),(36,'wagtailimages','0007_image_file_size','2016-08-04 02:20:48.767693'),(37,'wagtailimages','0008_image_created_at_index','2016-08-04 02:20:48.795696'),(38,'wagtailimages','0009_capitalizeverbose','2016-08-04 02:20:49.025441'),(39,'wagtailimages','0010_change_on_delete_behaviour','2016-08-04 02:20:49.121424'),(40,'wagtailcore','0017_change_edit_page_permission_description','2016-08-04 02:20:49.144503'),(41,'wagtailcore','0018_pagerevision_submitted_for_moderation_index','2016-08-04 02:20:49.186319'),(42,'wagtailcore','0019_verbose_names_cleanup','2016-08-04 02:20:49.287931'),(43,'wagtailcore','0020_add_index_on_page_first_published_at','2016-08-04 02:20:49.325876'),(44,'wagtailcore','0021_capitalizeverbose','2016-08-04 02:20:50.483437'),(45,'wagtailcore','0022_add_site_name','2016-08-04 02:20:50.601042'),(46,'wagtailcore','0023_alter_page_revision_on_delete_behaviour','2016-08-04 02:20:50.687991'),(47,'wagtailcore','0024_collection','2016-08-04 02:20:50.734779'),(48,'wagtailcore','0025_collection_initial_data','2016-08-04 02:20:50.744646'),(49,'wagtailcore','0026_group_collection_permission','2016-08-04 02:20:51.063082'),(50,'wagtailimages','0011_image_collection','2016-08-04 02:20:51.241049'),(51,'wagtailimages','0012_copy_image_permissions_to_collections','2016-08-04 02:20:51.263634'),(52,'wagtailimages','0013_make_rendition_upload_callable','2016-08-04 02:20:51.291694'),(53,'wagtailcore','0027_fix_collection_path_collation','2016-08-04 02:20:51.300519'),(54,'wagtailcore','0024_alter_page_content_type_on_delete_behaviour','2016-08-04 02:20:51.416492'),(55,'wagtailcore','0028_merge','2016-08-04 02:20:51.421269'),(56,'blog','0001_initial','2016-08-04 02:20:51.661770'),(57,'home','0001_initial','2016-08-04 02:20:52.047308'),(58,'sessions','0001_initial','2016-08-04 02:20:52.100167'),(59,'wagtailadmin','0001_create_admin_access_permissions','2016-08-04 02:20:52.132144'),(60,'wagtaildocs','0001_initial','2016-08-04 02:20:52.243372'),(61,'wagtaildocs','0002_initial_data','2016-08-04 02:20:52.282736'),(62,'wagtaildocs','0003_add_verbose_names','2016-08-04 02:20:52.427719'),(63,'wagtaildocs','0004_capitalizeverbose','2016-08-04 02:20:52.634011'),(64,'wagtaildocs','0005_document_collection','2016-08-04 02:20:52.800602'),(65,'wagtaildocs','0006_copy_document_permissions_to_collections','2016-08-04 02:20:52.823913'),(66,'wagtaildocs','0005_alter_uploaded_by_user_on_delete_action','2016-08-04 02:20:52.910870'),(67,'wagtaildocs','0007_merge','2016-08-04 02:20:52.915461'),(68,'wagtailembeds','0001_initial','2016-08-04 02:20:52.971874'),(69,'wagtailembeds','0002_add_verbose_names','2016-08-04 02:20:52.980007'),(70,'wagtailembeds','0003_capitalizeverbose','2016-08-04 02:20:52.988452'),(71,'wagtailforms','0001_initial','2016-08-04 02:20:53.115059'),(72,'wagtailforms','0002_add_verbose_names','2016-08-04 02:20:53.174596'),(73,'wagtailforms','0003_capitalizeverbose','2016-08-04 02:20:53.235770'),(74,'wagtailredirects','0001_initial','2016-08-04 02:20:53.440079'),(75,'wagtailredirects','0002_add_verbose_names','2016-08-04 02:20:53.573570'),(76,'wagtailredirects','0003_make_site_field_editable','2016-08-04 02:20:53.739625'),(77,'wagtailredirects','0004_set_unique_on_path_and_site','2016-08-04 02:20:53.820255'),(78,'wagtailredirects','0005_capitalizeverbose','2016-08-04 02:20:54.135230'),(79,'wagtailsearch','0001_initial','2016-08-04 02:20:54.541275'),(80,'wagtailsearch','0002_add_verbose_names','2016-08-04 02:20:54.733820'),(81,'wagtailsearch','0003_remove_editors_pick','2016-08-04 02:20:54.776610'),(82,'wagtailusers','0001_initial','2016-08-04 02:20:54.898821'),(83,'wagtailusers','0002_add_verbose_name_on_userprofile','2016-08-04 02:20:54.991430'),(84,'wagtailusers','0003_add_verbose_names','2016-08-04 02:20:55.031880'),(85,'wagtailusers','0004_capitalizeverbose','2016-08-04 02:20:55.154414'),(86,'wagtailcore','0001_squashed_0016_change_page_url_path_to_text_field','2016-08-04 02:20:55.162555');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2016-08-04 02:20:45.621146'),(2,'auth','0001_initial','2016-08-04 02:20:46.286301'),(3,'admin','0001_initial','2016-08-04 02:20:46.444332'),(4,'admin','0002_logentry_remove_auto_add','2016-08-04 02:20:46.461706'),(5,'contenttypes','0002_remove_content_type_name','2016-08-04 02:20:46.582701'),(6,'auth','0002_alter_permission_name_max_length','2016-08-04 02:20:46.639212'),(7,'auth','0003_alter_user_email_max_length','2016-08-04 02:20:46.696750'),(8,'auth','0004_alter_user_username_opts','2016-08-04 02:20:46.711015'),(9,'auth','0005_alter_user_last_login_null','2016-08-04 02:20:46.770213'),(10,'auth','0006_require_contenttypes_0002','2016-08-04 02:20:46.774627'),(11,'auth','0007_alter_validators_add_error_messages','2016-08-04 02:20:46.787361'),(12,'taggit','0001_initial','2016-08-04 02:20:47.004682'),(13,'taggit','0002_auto_20150616_2121','2016-08-04 02:20:47.040610'),(14,'wagtailimages','0001_initial','2016-08-04 02:20:47.379263'),(15,'wagtailcore','0001_initial','2016-08-04 02:20:48.263232'),(16,'wagtailcore','0002_initial_data','2016-08-04 02:20:48.267641'),(17,'wagtailcore','0003_add_uniqueness_constraint_on_group_page_permission','2016-08-04 02:20:48.272345'),(18,'wagtailcore','0004_page_locked','2016-08-04 02:20:48.276652'),(19,'wagtailcore','0005_add_page_lock_permission_to_moderators','2016-08-04 02:20:48.280846'),(20,'wagtailcore','0006_add_lock_page_permission','2016-08-04 02:20:48.285161'),(21,'wagtailcore','0007_page_latest_revision_created_at','2016-08-04 02:20:48.289454'),(22,'wagtailcore','0008_populate_latest_revision_created_at','2016-08-04 02:20:48.294232'),(23,'wagtailcore','0009_remove_auto_now_add_from_pagerevision_created_at','2016-08-04 02:20:48.304795'),(24,'wagtailcore','0010_change_page_owner_to_null_on_delete','2016-08-04 02:20:48.309215'),(25,'wagtailcore','0011_page_first_published_at','2016-08-04 02:20:48.313590'),(26,'wagtailcore','0012_extend_page_slug_field','2016-08-04 02:20:48.318032'),(27,'wagtailcore','0013_update_golive_expire_help_text','2016-08-04 02:20:48.322360'),(28,'wagtailcore','0014_add_verbose_name','2016-08-04 02:20:48.326627'),(29,'wagtailcore','0015_add_more_verbose_names','2016-08-04 02:20:48.330710'),(30,'wagtailcore','0016_change_page_url_path_to_text_field','2016-08-04 02:20:48.335092'),(31,'wagtailimages','0002_initial_data','2016-08-04 02:20:48.374655'),(32,'wagtailimages','0003_fix_focal_point_fields','2016-08-04 02:20:48.449533'),(33,'wagtailimages','0004_make_focal_point_key_not_nullable','2016-08-04 02:20:48.533296'),(34,'wagtailimages','0005_make_filter_spec_unique','2016-08-04 02:20:48.572710'),(35,'wagtailimages','0006_add_verbose_names','2016-08-04 02:20:48.698810'),(36,'wagtailimages','0007_image_file_size','2016-08-04 02:20:48.767693'),(37,'wagtailimages','0008_image_created_at_index','2016-08-04 02:20:48.795696'),(38,'wagtailimages','0009_capitalizeverbose','2016-08-04 02:20:49.025441'),(39,'wagtailimages','0010_change_on_delete_behaviour','2016-08-04 02:20:49.121424'),(40,'wagtailcore','0017_change_edit_page_permission_description','2016-08-04 02:20:49.144503'),(41,'wagtailcore','0018_pagerevision_submitted_for_moderation_index','2016-08-04 02:20:49.186319'),(42,'wagtailcore','0019_verbose_names_cleanup','2016-08-04 02:20:49.287931'),(43,'wagtailcore','0020_add_index_on_page_first_published_at','2016-08-04 02:20:49.325876'),(44,'wagtailcore','0021_capitalizeverbose','2016-08-04 02:20:50.483437'),(45,'wagtailcore','0022_add_site_name','2016-08-04 02:20:50.601042'),(46,'wagtailcore','0023_alter_page_revision_on_delete_behaviour','2016-08-04 02:20:50.687991'),(47,'wagtailcore','0024_collection','2016-08-04 02:20:50.734779'),(48,'wagtailcore','0025_collection_initial_data','2016-08-04 02:20:50.744646'),(49,'wagtailcore','0026_group_collection_permission','2016-08-04 02:20:51.063082'),(50,'wagtailimages','0011_image_collection','2016-08-04 02:20:51.241049'),(51,'wagtailimages','0012_copy_image_permissions_to_collections','2016-08-04 02:20:51.263634'),(52,'wagtailimages','0013_make_rendition_upload_callable','2016-08-04 02:20:51.291694'),(53,'wagtailcore','0027_fix_collection_path_collation','2016-08-04 02:20:51.300519'),(54,'wagtailcore','0024_alter_page_content_type_on_delete_behaviour','2016-08-04 02:20:51.416492'),(55,'wagtailcore','0028_merge','2016-08-04 02:20:51.421269'),(58,'sessions','0001_initial','2016-08-04 02:20:52.100167'),(59,'wagtailadmin','0001_create_admin_access_permissions','2016-08-04 02:20:52.132144'),(60,'wagtaildocs','0001_initial','2016-08-04 02:20:52.243372'),(61,'wagtaildocs','0002_initial_data','2016-08-04 02:20:52.282736'),(62,'wagtaildocs','0003_add_verbose_names','2016-08-04 02:20:52.427719'),(63,'wagtaildocs','0004_capitalizeverbose','2016-08-04 02:20:52.634011'),(64,'wagtaildocs','0005_document_collection','2016-08-04 02:20:52.800602'),(65,'wagtaildocs','0006_copy_document_permissions_to_collections','2016-08-04 02:20:52.823913'),(66,'wagtaildocs','0005_alter_uploaded_by_user_on_delete_action','2016-08-04 02:20:52.910870'),(67,'wagtaildocs','0007_merge','2016-08-04 02:20:52.915461'),(68,'wagtailembeds','0001_initial','2016-08-04 02:20:52.971874'),(69,'wagtailembeds','0002_add_verbose_names','2016-08-04 02:20:52.980007'),(70,'wagtailembeds','0003_capitalizeverbose','2016-08-04 02:20:52.988452'),(71,'wagtailforms','0001_initial','2016-08-04 02:20:53.115059'),(72,'wagtailforms','0002_add_verbose_names','2016-08-04 02:20:53.174596'),(73,'wagtailforms','0003_capitalizeverbose','2016-08-04 02:20:53.235770'),(74,'wagtailredirects','0001_initial','2016-08-04 02:20:53.440079'),(75,'wagtailredirects','0002_add_verbose_names','2016-08-04 02:20:53.573570'),(76,'wagtailredirects','0003_make_site_field_editable','2016-08-04 02:20:53.739625'),(77,'wagtailredirects','0004_set_unique_on_path_and_site','2016-08-04 02:20:53.820255'),(78,'wagtailredirects','0005_capitalizeverbose','2016-08-04 02:20:54.135230'),(79,'wagtailsearch','0001_initial','2016-08-04 02:20:54.541275'),(80,'wagtailsearch','0002_add_verbose_names','2016-08-04 02:20:54.733820'),(81,'wagtailsearch','0003_remove_editors_pick','2016-08-04 02:20:54.776610'),(82,'wagtailusers','0001_initial','2016-08-04 02:20:54.898821'),(83,'wagtailusers','0002_add_verbose_name_on_userprofile','2016-08-04 02:20:54.991430'),(84,'wagtailusers','0003_add_verbose_names','2016-08-04 02:20:55.031880'),(85,'wagtailusers','0004_capitalizeverbose','2016-08-04 02:20:55.154414'),(86,'wagtailcore','0001_squashed_0016_change_page_url_path_to_text_field','2016-08-04 02:20:55.162555'),(87,'auth','0008_alter_user_username_max_length','2020-08-29 09:00:03.193029'),(88,'wagtailcore','0029_unicode_slugfield_dj19','2020-08-29 09:00:03.301280'),(89,'wagtailcore','0030_index_on_pagerevision_created_at','2020-08-29 09:00:03.464041'),(91,'wagtailcore','0031_add_page_view_restriction_types','2020-08-29 09:06:19.477780'),(92,'wagtailcore','0032_add_bulk_delete_page_permission','2020-08-29 09:06:19.563423'),(93,'wagtailcore','0033_remove_golive_expiry_help_text','2020-08-29 09:06:19.662840'),(94,'wagtailcore','0034_page_live_revision','2020-08-29 09:08:50.568219'),(96,'wagtailcore','0035_page_last_published_at','2020-08-29 09:11:49.266083'),(97,'wagtailcore','0036_populate_page_last_published_at','2020-08-29 09:11:49.410334'),(98,'wagtailcore','0037_set_page_owner_editable','2020-08-29 09:11:49.651163'),(99,'wagtailcore','0038_make_first_published_at_editable','2020-08-29 09:11:49.738300'),(100,'wagtailcore','0039_collectionviewrestriction','2020-08-29 09:11:50.350770'),(101,'wagtailcore','0040_page_draft_title','2020-08-29 09:13:32.152792'),(102,'wagtailimages','0014_add_filter_spec_field','2020-08-29 09:13:32.533981'),(103,'wagtailimages','0015_fill_filter_spec_field','2020-08-29 09:13:32.693235'),(104,'wagtailimages','0016_deprecate_rendition_filter_relation','2020-08-29 09:13:33.046668'),(105,'wagtailimages','0017_reduce_focal_point_key_max_length','2020-08-29 09:13:33.185046'),(106,'wagtailimages','0018_remove_rendition_filter','2020-08-29 09:13:33.420137'),(107,'wagtailimages','0019_delete_filter','2020-08-29 09:13:33.530398'),(108,'wagtailusers','0005_make_related_name_wagtail_specific','2020-08-29 09:13:33.732707'),(109,'wagtailusers','0006_userprofile_prefered_language','2020-08-29 09:15:28.545836'),(110,'blog','0001_initial','2020-08-29 17:20:55.000000'),(111,'home','0001_initial','2020-08-29 17:21:54.000000');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -340,7 +338,7 @@ CREATE TABLE `django_session` (
   `expire_date` datetime(6) NOT NULL,
   PRIMARY KEY (`session_key`),
   KEY `django_session_de54fa62` (`expire_date`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -349,7 +347,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('t3pnafwmq7chr7mnijhexf2g5dkusnbt','MDc1ZjAwNjc0YmMxMTg3NjNlZTNjZDEwYmU5M2E0MjI4ZTA2OGM5MTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6IjEiLCJfYXV0aF91c2VyX2hhc2giOiI1NTBmMzBmYjI5MDFmYWM0MWY1NzA2NDUwY2JjMDc5YzA0NTA0ODcwIn0=','2016-08-18 02:23:31.334485');
+INSERT INTO `django_session` VALUES ('1o8vqog73whgj4u8k4xd2fk7191f5lnv','N2NjMmM1Nzk0MDI2ZDU3YTgzMGIyY2NkNGZlYjYyZjYwN2FkOWU4Mjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI4YTk1MmUwNmQxODk2ZWZlYzQ0YTc2NDk5N2E3YjAxYmJlZTIxZmIxIn0=','2020-09-12 08:58:47.046060'),('t3pnafwmq7chr7mnijhexf2g5dkusnbt','MDc1ZjAwNjc0YmMxMTg3NjNlZTNjZDEwYmU5M2E0MjI4ZTA2OGM5MTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6IjEiLCJfYXV0aF91c2VyX2hhc2giOiI1NTBmMzBmYjI5MDFmYWM0MWY1NzA2NDUwY2JjMDc5YzA0NTA0ODcwIn0=','2016-08-18 02:23:31.334485');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -364,7 +362,7 @@ CREATE TABLE `home_aboutpage` (
   `page_ptr_id` int(11) NOT NULL,
   PRIMARY KEY (`page_ptr_id`),
   CONSTRAINT `home_aboutpage_page_ptr_id_f69f9474_fk_wagtailcore_page_id` FOREIGN KEY (`page_ptr_id`) REFERENCES `wagtailcore_page` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -389,7 +387,7 @@ CREATE TABLE `home_agreementpage` (
   `body` longtext NOT NULL,
   PRIMARY KEY (`page_ptr_id`),
   CONSTRAINT `home_agreementpage_page_ptr_id_56bbf1c7_fk_wagtailcore_page_id` FOREIGN KEY (`page_ptr_id`) REFERENCES `wagtailcore_page` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -413,7 +411,7 @@ CREATE TABLE `home_indexpage` (
   `page_ptr_id` int(11) NOT NULL,
   PRIMARY KEY (`page_ptr_id`),
   CONSTRAINT `home_indexpage_page_ptr_id_63631d84_fk_wagtailcore_page_id` FOREIGN KEY (`page_ptr_id`) REFERENCES `wagtailcore_page` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -438,7 +436,7 @@ CREATE TABLE `home_whateverpage` (
   `body` longtext NOT NULL,
   PRIMARY KEY (`page_ptr_id`),
   CONSTRAINT `home_whateverpage_page_ptr_id_60a5394e_fk_wagtailcore_page_id` FOREIGN KEY (`page_ptr_id`) REFERENCES `wagtailcore_page` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -465,7 +463,7 @@ CREATE TABLE `taggit_tag` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -495,7 +493,7 @@ CREATE TABLE `taggit_taggeditem` (
   KEY `taggit_taggeditem_content_type_id_196cc965_idx` (`content_type_id`,`object_id`),
   CONSTRAINT `taggit_tagged_content_type_id_9957a03c_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `taggit_taggeditem_tag_id_f4f5b767_fk_taggit_tag_id` FOREIGN KEY (`tag_id`) REFERENCES `taggit_tag` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -522,7 +520,7 @@ CREATE TABLE `wagtailcore_collection` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `path` (`path`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -533,6 +531,61 @@ LOCK TABLES `wagtailcore_collection` WRITE;
 /*!40000 ALTER TABLE `wagtailcore_collection` DISABLE KEYS */;
 INSERT INTO `wagtailcore_collection` VALUES (1,'0001',1,0,'Root');
 /*!40000 ALTER TABLE `wagtailcore_collection` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wagtailcore_collectionviewrestriction`
+--
+
+DROP TABLE IF EXISTS `wagtailcore_collectionviewrestriction`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wagtailcore_collectionviewrestriction` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `restriction_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `collection_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `wagtailcore_collecti_collection_id_761908ec_fk_wagtailco` (`collection_id`),
+  CONSTRAINT `wagtailcore_collecti_collection_id_761908ec_fk_wagtailco` FOREIGN KEY (`collection_id`) REFERENCES `wagtailcore_collection` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wagtailcore_collectionviewrestriction`
+--
+
+LOCK TABLES `wagtailcore_collectionviewrestriction` WRITE;
+/*!40000 ALTER TABLE `wagtailcore_collectionviewrestriction` DISABLE KEYS */;
+/*!40000 ALTER TABLE `wagtailcore_collectionviewrestriction` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wagtailcore_collectionviewrestriction_groups`
+--
+
+DROP TABLE IF EXISTS `wagtailcore_collectionviewrestriction_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wagtailcore_collectionviewrestriction_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `collectionviewrestriction_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `wagtailcore_collectionvi_collectionviewrestrictio_988995ae_uniq` (`collectionviewrestriction_id`,`group_id`),
+  KEY `wagtailcore_collecti_group_id_1823f2a3_fk_auth_grou` (`group_id`),
+  CONSTRAINT `wagtailcore_collecti_collectionviewrestri_47320efd_fk_wagtailco` FOREIGN KEY (`collectionviewrestriction_id`) REFERENCES `wagtailcore_collectionviewrestriction` (`id`),
+  CONSTRAINT `wagtailcore_collecti_group_id_1823f2a3_fk_auth_grou` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wagtailcore_collectionviewrestriction_groups`
+--
+
+LOCK TABLES `wagtailcore_collectionviewrestriction_groups` WRITE;
+/*!40000 ALTER TABLE `wagtailcore_collectionviewrestriction_groups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `wagtailcore_collectionviewrestriction_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -554,7 +607,7 @@ CREATE TABLE `wagtailcore_groupcollectionpermission` (
   CONSTRAINT `wagtailcore__collection_id_5423575a_fk_wagtailcore_collection_id` FOREIGN KEY (`collection_id`) REFERENCES `wagtailcore_collection` (`id`),
   CONSTRAINT `wagtailcore_groupco_permission_id_1b626275_fk_auth_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   CONSTRAINT `wagtailcore_groupcollectionpe_group_id_05d61460_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -584,7 +637,7 @@ CREATE TABLE `wagtailcore_grouppagepermission` (
   KEY `wagtailcore_grouppageper_page_id_710b114a_fk_wagtailcore_page_id` (`page_id`),
   CONSTRAINT `wagtailcore_grouppageper_page_id_710b114a_fk_wagtailcore_page_id` FOREIGN KEY (`page_id`) REFERENCES `wagtailcore_page` (`id`),
   CONSTRAINT `wagtailcore_grouppagepermissi_group_id_fc07e671_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -625,6 +678,9 @@ CREATE TABLE `wagtailcore_page` (
   `locked` tinyint(1) NOT NULL,
   `latest_revision_created_at` datetime(6) DEFAULT NULL,
   `first_published_at` datetime(6) DEFAULT NULL,
+  `live_revision_id` int(11) DEFAULT NULL,
+  `last_published_at` datetime(6) DEFAULT NULL,
+  `draft_title` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `path` (`path`),
   KEY `wagtailcore_page_2dbcba41` (`slug`),
@@ -633,7 +689,7 @@ CREATE TABLE `wagtailcore_page` (
   KEY `wagtailcore_p_content_type_id_c28424df_fk_django_content_type_id` (`content_type_id`),
   CONSTRAINT `wagtailcore_p_content_type_id_c28424df_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `wagtailcore_page_owner_id_fbf7c332_fk_auth_user_id` FOREIGN KEY (`owner_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -642,7 +698,7 @@ CREATE TABLE `wagtailcore_page` (
 
 LOCK TABLES `wagtailcore_page` WRITE;
 /*!40000 ALTER TABLE `wagtailcore_page` DISABLE KEYS */;
-INSERT INTO `wagtailcore_page` VALUES (1,'0001',1,2,'Root','root',1,0,'/','',0,'',NULL,NULL,0,1,NULL,0,NULL,NULL),(2,'00010001',2,0,'Welcome to your new Wagtail site!','home',1,0,'/home/','',0,'',NULL,NULL,0,1,NULL,0,NULL,NULL),(3,'00010002',2,3,'首页 Docker-Wagtail','index',1,0,'/index/','',0,'',NULL,NULL,0,5,1,0,'2016-08-04 02:25:03.532680','2016-08-04 02:25:03.567152'),(4,'000100020001',3,2,'博客文章列表','blog',1,0,'/index/blog/','博客文章列表',1,'',NULL,NULL,0,9,1,0,'2016-08-04 02:28:20.777548','2016-08-04 02:28:20.815323'),(5,'0001000200010001',4,1,'一类博客文章','category-1',1,0,'/index/blog/category-1/','一类博客文章',1,'',NULL,NULL,0,9,1,0,'2016-08-04 02:28:44.510034','2016-08-04 02:28:44.551415'),(6,'0001000200010002',4,0,'二类博客文章','category-2',1,0,'/index/blog/category-2/','二类博客文章',1,'',NULL,NULL,0,9,1,0,'2016-08-04 02:29:13.766698','2016-08-04 02:29:13.800295'),(7,'000100020002',3,0,'关于我们','about',1,0,'/index/about/','关于我们',1,'',NULL,NULL,0,6,1,0,'2016-08-04 02:29:41.591658','2016-08-04 02:29:41.632127'),(8,'000100020003',3,1,'PUBLIC','public',1,0,'/index/public/','PUBLIC',0,'',NULL,NULL,0,7,1,0,'2016-08-04 02:30:06.075800','2016-08-04 02:30:06.106819'),(9,'0001000200030001',4,0,'用户协议','yhxy',1,0,'/index/public/yhxy/','用户协议',0,'',NULL,NULL,0,8,1,0,'2016-08-04 02:30:48.539276','2016-08-04 02:30:48.566662'),(10,'00010002000100010001',5,0,'第一篇博客文章','the-first-blog',1,0,'/index/blog/category-1/the-first-blog/','第一篇博客文章',1,'',NULL,NULL,0,10,1,0,'2016-08-04 02:32:19.527879','2016-08-04 02:32:19.571627');
+INSERT INTO `wagtailcore_page` VALUES (1,'0001',1,2,'Root','root',1,0,'/','',0,'',NULL,NULL,0,1,NULL,0,NULL,NULL,NULL,NULL,'Root'),(2,'00010001',2,0,'Welcome to your new Wagtail site!','home',1,0,'/home/','',0,'',NULL,NULL,0,1,NULL,0,NULL,NULL,NULL,NULL,'Welcome to your new Wagtail site!'),(3,'00010002',2,3,'首页 Docker-Wagtail','index',1,0,'/index/','',0,'',NULL,NULL,0,5,1,0,'2016-08-04 02:25:03.532680','2016-08-04 02:25:03.567152',NULL,'2016-08-04 02:25:03.532680','首页 Docker-Wagtail'),(4,'000100020001',3,2,'博客文章列表','blog',1,0,'/index/blog/','博客文章列表',1,'',NULL,NULL,0,9,1,0,'2016-08-04 02:28:20.777548','2016-08-04 02:28:20.815323',NULL,'2016-08-04 02:28:20.777548','博客文章列表'),(5,'0001000200010001',4,1,'一类博客文章','category-1',1,0,'/index/blog/category-1/','一类博客文章',1,'',NULL,NULL,0,9,1,0,'2016-08-04 02:28:44.510034','2016-08-04 02:28:44.551415',NULL,'2016-08-04 02:28:44.510034','一类博客文章'),(6,'0001000200010002',4,0,'二类博客文章','category-2',1,0,'/index/blog/category-2/','二类博客文章',1,'',NULL,NULL,0,9,1,0,'2016-08-04 02:29:13.766698','2016-08-04 02:29:13.800295',NULL,'2016-08-04 02:29:13.766698','二类博客文章'),(7,'000100020002',3,0,'关于我们','about',1,0,'/index/about/','关于我们',1,'',NULL,NULL,0,6,1,0,'2016-08-04 02:29:41.591658','2016-08-04 02:29:41.632127',NULL,'2016-08-04 02:29:41.591658','关于我们'),(8,'000100020003',3,1,'PUBLIC','public',1,0,'/index/public/','PUBLIC',0,'',NULL,NULL,0,7,1,0,'2016-08-04 02:30:06.075800','2016-08-04 02:30:06.106819',NULL,'2016-08-04 02:30:06.075800','PUBLIC'),(9,'0001000200030001',4,0,'用户协议','yhxy',1,0,'/index/public/yhxy/','用户协议',0,'',NULL,NULL,0,8,1,0,'2016-08-04 02:30:48.539276','2016-08-04 02:30:48.566662',NULL,'2016-08-04 02:30:48.539276','用户协议'),(10,'00010002000100010001',5,0,'第一篇博客文章','the-first-blog',1,0,'/index/blog/category-1/the-first-blog/','第一篇博客文章',1,'',NULL,NULL,0,10,1,0,'2016-08-04 02:32:19.527879','2016-08-04 02:32:19.571627',NULL,'2016-08-04 02:32:19.527879','第一篇博客文章');
 /*!40000 ALTER TABLE `wagtailcore_page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -665,9 +721,10 @@ CREATE TABLE `wagtailcore_pagerevision` (
   KEY `wagtailcore_pagerevision_submitted_for_moderation_c682e44c_uniq` (`submitted_for_moderation`),
   KEY `wagtailcore_pagerevision_page_id_d421cc1d_fk_wagtailcore_page_id` (`page_id`),
   KEY `wagtailcore_pagerevision_user_id_2409d2f4_fk_auth_user_id` (`user_id`),
+  KEY `wagtailcore_pagerevision_created_at_66954e3b` (`created_at`),
   CONSTRAINT `wagtailcore_pagerevision_page_id_d421cc1d_fk_wagtailcore_page_id` FOREIGN KEY (`page_id`) REFERENCES `wagtailcore_page` (`id`),
   CONSTRAINT `wagtailcore_pagerevision_user_id_2409d2f4_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -691,10 +748,11 @@ CREATE TABLE `wagtailcore_pageviewrestriction` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `password` varchar(255) NOT NULL,
   `page_id` int(11) NOT NULL,
+  `restriction_type` varchar(20) DEFAULT 'password',
   PRIMARY KEY (`id`),
   KEY `wagtailcore_pageviewrest_page_id_15a8bea6_fk_wagtailcore_page_id` (`page_id`),
   CONSTRAINT `wagtailcore_pageviewrest_page_id_15a8bea6_fk_wagtailcore_page_id` FOREIGN KEY (`page_id`) REFERENCES `wagtailcore_page` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -704,6 +762,30 @@ CREATE TABLE `wagtailcore_pageviewrestriction` (
 LOCK TABLES `wagtailcore_pageviewrestriction` WRITE;
 /*!40000 ALTER TABLE `wagtailcore_pageviewrestriction` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wagtailcore_pageviewrestriction` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wagtailcore_pageviewrestriction_groups`
+--
+
+DROP TABLE IF EXISTS `wagtailcore_pageviewrestriction_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wagtailcore_pageviewrestriction_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pageviewrestriction_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wagtailcore_pageviewrestriction_groups`
+--
+
+LOCK TABLES `wagtailcore_pageviewrestriction_groups` WRITE;
+/*!40000 ALTER TABLE `wagtailcore_pageviewrestriction_groups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `wagtailcore_pageviewrestriction_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -719,13 +801,13 @@ CREATE TABLE `wagtailcore_site` (
   `port` int(11) NOT NULL,
   `is_default_site` tinyint(1) NOT NULL,
   `root_page_id` int(11) NOT NULL,
-  `site_name` varchar(255),
+  `site_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `wagtailcore_site_hostname_2c626d70_uniq` (`hostname`,`port`),
   KEY `wagtailcore_site_0897acf4` (`hostname`),
   KEY `wagtailcore_site_root_page_id_e02fb95c_fk_wagtailcore_page_id` (`root_page_id`),
   CONSTRAINT `wagtailcore_site_root_page_id_e02fb95c_fk_wagtailcore_page_id` FOREIGN KEY (`root_page_id`) REFERENCES `wagtailcore_page` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -757,7 +839,7 @@ CREATE TABLE `wagtaildocs_document` (
   KEY `wagtaildocs_documen_uploaded_by_user_id_17258b41_fk_auth_user_id` (`uploaded_by_user_id`),
   CONSTRAINT `wagtaildocs__collection_id_23881625_fk_wagtailcore_collection_id` FOREIGN KEY (`collection_id`) REFERENCES `wagtailcore_collection` (`id`),
   CONSTRAINT `wagtaildocs_documen_uploaded_by_user_id_17258b41_fk_auth_user_id` FOREIGN KEY (`uploaded_by_user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -791,7 +873,7 @@ CREATE TABLE `wagtailembeds_embed` (
   `last_updated` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `wagtailembeds_embed_url_8a2922d8_uniq` (`url`,`max_width`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -818,7 +900,7 @@ CREATE TABLE `wagtailforms_formsubmission` (
   PRIMARY KEY (`id`),
   KEY `wagtailforms_formsubmiss_page_id_e48e93e7_fk_wagtailcore_page_id` (`page_id`),
   CONSTRAINT `wagtailforms_formsubmiss_page_id_e48e93e7_fk_wagtailcore_page_id` FOREIGN KEY (`page_id`) REFERENCES `wagtailcore_page` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -828,30 +910,6 @@ CREATE TABLE `wagtailforms_formsubmission` (
 LOCK TABLES `wagtailforms_formsubmission` WRITE;
 /*!40000 ALTER TABLE `wagtailforms_formsubmission` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wagtailforms_formsubmission` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `wagtailimages_filter`
---
-
-DROP TABLE IF EXISTS `wagtailimages_filter`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `wagtailimages_filter` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `spec` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `wagtailimages_filter_spec_42ad6e02_uniq` (`spec`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `wagtailimages_filter`
---
-
-LOCK TABLES `wagtailimages_filter` WRITE;
-/*!40000 ALTER TABLE `wagtailimages_filter` DISABLE KEYS */;
-/*!40000 ALTER TABLE `wagtailimages_filter` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -873,7 +931,7 @@ CREATE TABLE `wagtailimages_image` (
   `focal_point_width` int(10) unsigned DEFAULT NULL,
   `focal_point_height` int(10) unsigned DEFAULT NULL,
   `uploaded_by_user_id` int(11) DEFAULT NULL,
-  `file_size` int(10) unsigned,
+  `file_size` int(10) unsigned DEFAULT NULL,
   `collection_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `wagtailimages_image_created_at_86fa6cd4_uniq` (`created_at`),
@@ -881,7 +939,7 @@ CREATE TABLE `wagtailimages_image` (
   KEY `wagtailimages_image_0a1a4dd8` (`collection_id`),
   CONSTRAINT `wagtailimage_collection_id_c2f8af7e_fk_wagtailcore_collection_id` FOREIGN KEY (`collection_id`) REFERENCES `wagtailcore_collection` (`id`),
   CONSTRAINT `wagtailimages_image_uploaded_by_user_id_5d73dc75_fk_auth_user_id` FOREIGN KEY (`uploaded_by_user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -905,15 +963,15 @@ CREATE TABLE `wagtailimages_rendition` (
   `file` varchar(100) NOT NULL,
   `width` int(11) NOT NULL,
   `height` int(11) NOT NULL,
-  `focal_point_key` varchar(255) NOT NULL,
-  `filter_id` int(11) NOT NULL,
+  `focal_point_key` varchar(16) NOT NULL,
   `image_id` int(11) NOT NULL,
+  `filter_spec` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `wagtailimages_rendition_image_id_03110280_uniq` (`image_id`,`filter_id`,`focal_point_key`),
-  KEY `wagtailimages_rend_filter_id_7fc52567_fk_wagtailimages_filter_id` (`filter_id`),
-  CONSTRAINT `wagtailimages_rend_filter_id_7fc52567_fk_wagtailimages_filter_id` FOREIGN KEY (`filter_id`) REFERENCES `wagtailimages_filter` (`id`),
+  UNIQUE KEY `wagtailimages_rendition_image_id_filter_spec_foc_323c8fe0_uniq` (`image_id`,`filter_spec`,`focal_point_key`),
+  KEY `wagtailimages_rendition_filter_spec_1cba3201` (`filter_spec`),
+  KEY `wagtailimages_rendition_image_id_3e1fd774` (`image_id`),
   CONSTRAINT `wagtailimages_rendit_image_id_3e1fd774_fk_wagtailimages_image_id` FOREIGN KEY (`image_id`) REFERENCES `wagtailimages_image` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -945,7 +1003,7 @@ CREATE TABLE `wagtailredirects_redirect` (
   KEY `wagtailredirects_redirec_site_id_780a0e1e_fk_wagtailcore_site_id` (`site_id`),
   CONSTRAINT `wagtailredirect_redirect_page_id_b5728a8f_fk_wagtailcore_page_id` FOREIGN KEY (`redirect_page_id`) REFERENCES `wagtailcore_page` (`id`),
   CONSTRAINT `wagtailredirects_redirec_site_id_780a0e1e_fk_wagtailcore_site_id` FOREIGN KEY (`site_id`) REFERENCES `wagtailcore_site` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -975,7 +1033,7 @@ CREATE TABLE `wagtailsearch_editorspick` (
   KEY `wagtailsearch_editorspic_page_id_28cbc274_fk_wagtailcore_page_id` (`page_id`),
   CONSTRAINT `wagtailsearch_editor_query_id_c6eee4a0_fk_wagtailsearch_query_id` FOREIGN KEY (`query_id`) REFERENCES `wagtailsearch_query` (`id`),
   CONSTRAINT `wagtailsearch_editorspic_page_id_28cbc274_fk_wagtailcore_page_id` FOREIGN KEY (`page_id`) REFERENCES `wagtailcore_page` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -999,7 +1057,7 @@ CREATE TABLE `wagtailsearch_query` (
   `query_string` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `query_string` (`query_string`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1026,7 +1084,7 @@ CREATE TABLE `wagtailsearch_querydailyhits` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `wagtailsearch_querydailyhits_query_id_1dd232e6_uniq` (`query_id`,`date`),
   CONSTRAINT `wagtailsearch_queryd_query_id_2185994b_fk_wagtailsearch_query_id` FOREIGN KEY (`query_id`) REFERENCES `wagtailsearch_query` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1051,10 +1109,11 @@ CREATE TABLE `wagtailusers_userprofile` (
   `approved_notifications` tinyint(1) NOT NULL,
   `rejected_notifications` tinyint(1) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `preferred_language` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`),
   CONSTRAINT `wagtailusers_userprofile_user_id_59c92331_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1075,4 +1134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-08-04 14:15:38
+-- Dump completed on 2020-08-29 17:29:38
