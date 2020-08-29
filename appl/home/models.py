@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
+from wagtail.core.models import Page
+from wagtail.core.fields import RichTextField
+from wagtail.admin.edit_handlers import FieldPanel
 
 
 class IndexPage(Page):
     # the default home index
     # explicitly set the `page_ptr` on a blank class
     # https://groups.google.com/forum/#!msg/wagtail/GJMOlZI5SIQ/OD0Q8MAZCQAJ
-    page_ptr = models.OneToOneField(Page, parent_link=True, related_name='+')
+    page_ptr = models.OneToOneField(Page, parent_link=True, on_delete=models.CASCADE, related_name='+')
 
     class Meta:
         verbose_name = "PC 首页"
