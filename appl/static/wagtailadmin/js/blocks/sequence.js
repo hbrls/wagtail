@@ -53,7 +53,14 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
 
             // focus first suitable input found
             var timeout = setTimeout(function() {
-                $('.input input,.input textarea,.input .richtext', self.container).first().focus();
+              var $input = $('.input', self.container);
+              var $firstField = $('input, textarea, [data-hallo-editor], [data-draftail-input]', $input).first();
+
+              if ($firstField.is('[data-draftail-input]')) {
+                $firstField.get(0).draftailEditor.focus();
+              } else {
+                $firstField.trigger('focus');
+              }
             }, 250);
         };
 
@@ -120,7 +127,7 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
         }
 
         self.insertMemberBefore = function(otherMember, template) {
-            newMemberPrefix = getNewMemberPrefix();
+            var newMemberPrefix = getNewMemberPrefix();
 
             /* Create the new list member element with the real prefix substituted in */
             var elem = elementFromTemplate(template, newMemberPrefix);
@@ -147,7 +154,7 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
         };
 
         self.insertMemberAfter = function(otherMember, template) {
-            newMemberPrefix = getNewMemberPrefix();
+            var newMemberPrefix = getNewMemberPrefix();
 
             /* Create the new list member element with the real prefix substituted in */
             var elem = elementFromTemplate(template, newMemberPrefix);
@@ -178,7 +185,7 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
                 self.insertMemberBefore(members[0], template)
             because that won't work for initially empty lists
             */
-            newMemberPrefix = getNewMemberPrefix();
+            var newMemberPrefix = getNewMemberPrefix();
 
             /* Create the new list member element with the real prefix substituted in */
             var elem = elementFromTemplate(template, newMemberPrefix);
@@ -204,7 +211,7 @@ CODE FOR SETTING UP SPECIFIC UI WIDGETS, SUCH AS DELETE BUTTONS OR MENUS, DOES N
         };
 
         self.insertMemberAtEnd = function(template) {
-            newMemberPrefix = getNewMemberPrefix();
+            var newMemberPrefix = getNewMemberPrefix();
 
             /* Create the new list member element with the real prefix substituted in */
             var elem = elementFromTemplate(template, newMemberPrefix);

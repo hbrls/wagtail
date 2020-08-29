@@ -15,7 +15,7 @@
                     uuid: this.options.uuid,
                     editable: this.options.editable,
                     label: 'Documents',
-                    icon: 'icon-file-text-alt',
+                    icon: 'icon-doc-full',
                     command: null
                 });
                 toolbar.append(button);
@@ -25,6 +25,7 @@
                     lastSelection = widget.options.editable.getSelection();
                     return ModalWorkflow({
                         url: window.chooserUrls.documentChooser,
+                        onload: DOCUMENT_CHOOSER_MODAL_ONLOAD_HANDLERS,
                         responses: {
                             documentChosen: function(docData) {
                                 var a;
