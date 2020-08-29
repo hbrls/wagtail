@@ -104,3 +104,6 @@ ALTER TABLE wagtailexample.wagtailcore_page ADD draft_title VARCHAR(255) NULL;
 
 -> 2.8.2 (mirrors.aliyun of 2.7.4 is broken)
 --
+
+-> 2.9.3
+--
