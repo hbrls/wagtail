@@ -3,6 +3,15 @@ Wagtail
 
 Wagtail, the opinionated best practice.
 
+Docker Image
+==
+
+    $ docker build -t hbrls/wagtail:{version} .
+
+For most of the time, you will continue to install app-specific dependencies. So I left the `USER root` there. Before you start you final app, you should set it to `USER www-data`.
+
+`RUN sed "s/#logformat/$(cat /path/to/uwsgi-logformat.yaml)/" /uwsgi.yaml` to use your customized logformat.
+
 Best Practice
 ==
 
