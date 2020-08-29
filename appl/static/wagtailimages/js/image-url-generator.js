@@ -40,7 +40,7 @@ $(function() {
 
                 if (filterSpec == 'fill') {
                     $closenessField.prop('disabled', false);
-                    filterSpec += '-' + $widthField.val() + 'x' + $heightField.val() + '-c' + $closenessField.val()
+                    filterSpec += '-' + $widthField.val() + 'x' + $heightField.val() + '-c' + $closenessField.val();
                 } else {
                     $closenessField.prop('disabled', true);
                     filterSpec += '-' + $widthField.val() + 'x' + $heightField.val();
@@ -68,13 +68,13 @@ $(function() {
                 });
         }
 
-        $form.change($.debounce(500, formChangeHandler));
-        $form.keyup($.debounce(500, formChangeHandler));
+        $form.on('change', $.debounce(500, formChangeHandler));
+        $form.on('keyup', $.debounce(500, formChangeHandler));
         formChangeHandler();
 
         // When the user clicks the URL, automatically select the whole thing (for easier copying)
-        $result.click(function() {
-            $(this).select();
+        $result.on('click', function() {
+            $(this).trigger('select');
         });
     });
 });

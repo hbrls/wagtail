@@ -21,8 +21,8 @@ function escapeHtml(text) {
     });
 }
 
-function initTagField(id, autocompleteUrl, allowSpaces) {
-    $('#' + id).tagit({
+function initTagField(id, autocompleteUrl, options) {
+    var finalOptions = Object.assign({
         autocomplete: {source: autocompleteUrl},
         preprocessTag: function(val) {
             // Double quote a tag if it contains a space
@@ -33,9 +33,9 @@ function initTagField(id, autocompleteUrl, allowSpaces) {
 
             return val;
         },
+    }, options);
 
-        allowSpaces: allowSpaces
-    });
+    $('#' + id).tagit(finalOptions);
 }
 
 /*
@@ -56,16 +56,23 @@ function enableDirtyFormCheck(formSelector, options) {
     var $form = $(formSelector);
     var confirmationMessage = options.confirmationMessage || ' ';
     var alwaysDirty = options.alwaysDirty || false;
-    var initialData = $form.serialize();
+    var initialData = null;
     var formSubmitted = false;
 
-    $form.submit(function() {
+    $form.on('submit', function() {
         formSubmitted = true;
     });
 
+    // Delay snapshotting the form’s data to avoid race conditions with form widgets that might process the values.
+    // User interaction with the form within that delay also won’t trigger the confirmation message.
+    setTimeout(function() {
+        initialData = $form.serialize();
+    }, 1000 * 10);
+
     window.addEventListener('beforeunload', function(event) {
+        var isDirty = initialData && $form.serialize() != initialData;
         var displayConfirmation = (
-            !formSubmitted && (alwaysDirty || $form.serialize() != initialData)
+            !formSubmitted && (alwaysDirty || isDirty)
         );
 
         if (displayConfirmation) {
@@ -91,22 +98,18 @@ $(function() {
 
     // Enable toggle to open/close user settings
     $(document).on('click', '#account-settings', function() {
-        $('#footer').toggleClass('footer-open');
+        $('.nav-main').toggleClass('nav-main--open-footer');
         $(this).find('em').toggleClass('icon-arrow-down-after icon-arrow-up-after');
     });
 
     // Resize nav to fit height of window. This is an unimportant bell/whistle to make it look nice
     var fitNav = function() {
         $('.nav-wrapper').css('min-height', $(window).height());
-        $('.nav-main').each(function() {
-            var thisHeight = $(this).height();
-            var footerHeight = $('#footer', $(this)).height();
-        });
     };
 
     fitNav();
 
-    $(window).resize(function() {
+    $(window).on('resize', function() {
         fitNav();
     });
 
@@ -114,7 +117,7 @@ $(function() {
     function initLogo() {
         var sensitivity = 8; // the amount of times the user must stroke the wagtail to trigger the animation
 
-        var $logoContainer = $('.wagtail-logo-container__desktop');
+        var $logoContainer = $('[data-animated-logo-container]');
         var mouseX = 0;
         var lastMouseX = 0;
         var dir = '';
@@ -129,7 +132,7 @@ $(function() {
             $logoContainer.removeClass('logo-playful').addClass('logo-serious');
         }
 
-        $logoContainer.mousemove(function(event) {
+        $logoContainer.on('mousemove', function(event) {
             mouseX = event.pageX;
 
             if (mouseX > lastMouseX) {
@@ -150,7 +153,7 @@ $(function() {
             lastDir = dir;
         });
 
-        $logoContainer.mouseleave(function() {
+        $logoContainer.on('mouseleave', function() {
             dirChangeCount = 0;
             disableWag();
         });
@@ -173,14 +176,19 @@ $(function() {
     });
 
     /* tabs */
+    if (window.location.hash) {
+      $('a[href="' + window.location.hash + '"]').tab('show');
+    }
+
     $(document).on('click', '.tab-nav a', function(e) {
-        e.preventDefault();
-        $(this).tab('show');
+      e.preventDefault();
+      $(this).tab('show');
+      window.history.replaceState(null, null, $(this).attr('href'));
     });
 
     $(document).on('click', '.tab-toggle', function(e) {
         e.preventDefault();
-        $('.tab-nav a[href="' + $(this).attr('href') + '"]').click();
+        $('.tab-nav a[href="' + $(this).attr('href') + '"]').trigger('click');
     });
 
     $('.dropdown').each(function() {
@@ -218,38 +226,54 @@ $(function() {
     if (window.headerSearch) {
         var searchCurrentIndex = 0;
         var searchNextIndex = 0;
+        var $input = $(window.headerSearch.termInput);
+        var $inputContainer = $input.parent();
 
-        $(window.headerSearch.termInput).on('keyup cut paste', function() {
-            clearTimeout($.data(this, 'timer'));
-            var wait = setTimeout(search, 200);
-            $(this).data('timer', wait);
+        $input.on('keyup cut paste change', function() {
+            clearTimeout($input.data('timer'));
+            $input.data('timer', setTimeout(search, 200));
         });
 
         // auto focus on search box
-        $(window.headerSearch.termInput).trigger('focus');
+        $input.trigger('focus');
 
         function search() {
             var workingClasses = 'icon-spinner';
 
-            $(window.headerSearch.termInput).parent().addClass(workingClasses);
-            searchNextIndex++;
-            var index = searchNextIndex;
-            $.ajax({
-                url: window.headerSearch.url,
-                data: {q: $(window.headerSearch.termInput).val()},
-                success: function(data, status) {
-                    if (index > searchCurrentIndex) {
-                        searchCurrentIndex = index;
-                        $(window.headerSearch.targetOutput).html(data).slideDown(800);
-                        window.history.pushState(null, 'Search results', '?q=' + $(window.headerSearch.termInput).val());
+            var newQuery = $input.val();
+            var currentQuery = getURLParam('q');
+            // only do the query if it has changed for trimmed queries
+            // eg. " " === "" and "firstword " ==== "firstword"
+            if (currentQuery.trim() !== newQuery.trim()) {
+                $inputContainer.addClass(workingClasses);
+                searchNextIndex++;
+                var index = searchNextIndex;
+                $.ajax({
+                    url: window.headerSearch.url,
+                    data: {q: newQuery},
+                    success: function(data, status) {
+                        if (index > searchCurrentIndex) {
+                            searchCurrentIndex = index;
+                            $(window.headerSearch.targetOutput).html(data).slideDown(800);
+                            window.history.replaceState(null, null, '?q=' + newQuery);
+                        }
+                    },
+                    complete: function() {
+                        wagtail.ui.initDropDowns();
+                        $inputContainer.removeClass(workingClasses);
                     }
-                },
-
-                complete: function() {
-                    $(window.headerSearch.termInput).parent().removeClass(workingClasses);
-                }
-            });
+                });
+            }
         }
+
+        function getURLParam(name) {
+            var results = new RegExp('[\\?&]' + name + '=([^]*)').exec(window.location.search);
+            if (results) {
+                return results[1];
+            }
+            return '';
+        }
+
     }
 
     /* Functions that need to run/rerun when active tabs are changed */
@@ -443,8 +467,6 @@ wagtail = (function(document, window, wagtail) {
         },
 
         _handleClick: function(e) {
-            var el = this.el;
-
             if (!this.state.isOpen) {
                 this.openDropDown(e);
             } else {
@@ -514,7 +536,7 @@ wagtail = (function(document, window, wagtail) {
     }
 
     $(document).ready(initDropDowns);
-
+    wagtail.ui.initDropDowns = initDropDowns;
     wagtail.ui.DropDownController = DropDownController;
     return wagtail;
 

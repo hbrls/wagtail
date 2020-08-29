@@ -4,7 +4,7 @@ function createPageChooser(id, pageTypes, openAtParentId, canChooseRoot, userPer
     var input = $('#' + id);
     var editLink = chooserElement.find('.edit-link');
 
-    $('.action-choose', chooserElement).click(function() {
+    $('.action-choose', chooserElement).on('click', function() {
         var initialUrl = window.chooserUrls.pageChooser;
         if (openAtParentId) {
             initialUrl += openAtParentId + '/';
@@ -21,6 +21,7 @@ function createPageChooser(id, pageTypes, openAtParentId, canChooseRoot, userPer
         ModalWorkflow({
             url: initialUrl,
             urlParams: urlParams,
+            onload: PAGE_CHOOSER_MODAL_ONLOAD_HANDLERS,
             responses: {
                 pageChosen: function(pageData) {
                     input.val(pageData.id);
@@ -33,7 +34,7 @@ function createPageChooser(id, pageTypes, openAtParentId, canChooseRoot, userPer
         });
     });
 
-    $('.action-clear', chooserElement).click(function() {
+    $('.action-clear', chooserElement).on('click', function() {
         input.val('');
         openAtParentId = null;
         chooserElement.addClass('blank');
