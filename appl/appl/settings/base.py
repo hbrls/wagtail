@@ -19,6 +19,10 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
+import pymysql
+pymysql.install_as_MySQLdb()
+
+
 # Quik-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -62,7 +66,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
-    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.legacy.sitemiddleware.SiteMiddleware',
 
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]

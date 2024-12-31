@@ -19,8 +19,8 @@ def top_menu(context, parent, calling_page=None):
     menuitems = parent.get_children().live().in_menu()
     for menuitem in menuitems:
         menuitem.show_dropdown = has_menu_children(menuitem)
-        menuitem.active = (calling_page.url.startswith(menuitem.url)
-                           if calling_page else False)
+        # menuitem.active = (calling_page.url.startswith(menuitem.url)
+        #                    if calling_page else False)
     return {
         'calling_page': calling_page,
         'menuitems': menuitems,
