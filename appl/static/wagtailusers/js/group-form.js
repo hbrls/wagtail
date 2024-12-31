@@ -1,13 +1,1 @@
-$(function() {
-    buildExpandingFormset('id_page_permissions', {
-        onInit: function(index) {
-            var deleteInputId = 'id_page_permissions-' + index + '-DELETE';
-            var childId = 'inline_child_page_permissions-' + index;
-            $('#' + deleteInputId + '-button').on('click', function() {
-                /* set 'deleted' form field to true */
-                $('#' + deleteInputId).val('1');
-                $('#' + childId).fadeOut();
-            });
-        }
-    });
-});
+$((function(){buildExpandingFormset("id_page_permissions",{onInit:function(i){var n="id_page_permissions-"+i+"-DELETE",o="inline_child_page_permissions-"+i;$("#"+n+"-button").on("click",(function(){$("#"+n).val("1"),$("#"+o).fadeOut()}))}})}));
