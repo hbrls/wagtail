@@ -83,6 +83,8 @@ References
 Django 101
 ==
 
+[Django LTS Roadmap](https://www.djangoproject.com/download/#supported-versions)
+
 ```bash
 $ python manage.py showmigrations --plan
 $ python manage.py sqlmigrate {app_name} {migration_name}
@@ -108,3 +110,9 @@ CHANGELOG
    2. [Pillow vs Platform](https://pillow.readthedocs.io/en/latest/installation/platform-support.html)
 4. Wagtail@2.11
    1. [SiteMiddleware moved to wagtail.contrib.legacy](https://github.com/wagtail/wagtail/blob/v2.11/docs/releases/2.11.rst#sitemiddleware-moved-to-wagtailcontriblegacy)
+
+3.0.3, 2022-09-05
+==
+
+1. Django@3.2.6, 2022-10-04
+2. drops Django@3.1, Python@3.6
