@@ -85,6 +85,8 @@ Django 101
 
 [Django LTS Roadmap](https://www.djangoproject.com/download/#supported-versions)
 
+[Wagtail LTS Roadmap](https://github.com/wagtail/wagtail/wiki/Release-schedule)
+
 ```bash
 $ python manage.py showmigrations --plan
 $ python manage.py sqlmigrate {app_name} {migration_name}
@@ -116,3 +118,9 @@ CHANGELOG
 
 1. Django@3.2.6, 2022-10-04
 2. drops Django@3.1, Python@3.6
+
+4.1.9, LTS, 2023-10-19
+==
+
+1. Django@4.1.10, 2023-07-03
+2. `ImageChooserPanel` -> `FieldPanel`

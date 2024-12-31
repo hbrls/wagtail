@@ -2,7 +2,6 @@
 from django.db import models
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
-from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.search import index
 
@@ -35,7 +34,7 @@ class ArticlePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('keywords'),
         FieldPanel('description'),
-        ImageChooserPanel('main_image'),
+        FieldPanel('main_image'),
         FieldPanel('date'),
         FieldPanel('intro'),
         FieldPanel('body'),
