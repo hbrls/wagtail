@@ -130,3 +130,9 @@ CHANGELOG
 
 1. Pillow==9.1.0, Willow==1.5
 2. `wagtail.core` deprecated
+
+5.2.3, LTS, 2024-01-23
+==
+
+1. Django@4.2.9, 2024-01-02
+2. Django@4.2 强制要求 MySQL@8

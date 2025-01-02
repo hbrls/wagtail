@@ -20,6 +20,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
 import pymysql
+pymysql.version_info = (1, 4, 6, 'final', 0)  # to bypass Django's hardcode version check
 pymysql.install_as_MySQLdb()
 
 
