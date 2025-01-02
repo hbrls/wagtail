@@ -124,3 +124,9 @@ CHANGELOG
 
 1. Django@4.1.10, 2023-07-03
 2. `ImageChooserPanel` -> `FieldPanel`
+
+5.0.5, 2023-10-19
+==
+
+1. Pillow==9.1.0, Willow==1.5
+2. `wagtail.core` deprecated
