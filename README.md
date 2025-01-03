@@ -73,6 +73,28 @@ Conventions
 
 6. For *do-whatever-you-like* pages, just choose `~/home/models.Whatever` in the admin panel. You can also customize your own class like `~/home/models.Agreement` for a set of similar whatever pages.
 
+Dependencies
+==
+
+| package                                                                  | version    | date       |
+|--------------------------------------------------------------------------|------------|------------|
+| Wagtail                                                                  | 5.2.3, LTS | 2024-01-23 |
+| Django                                                                   | 4.2.9, LTS | 2024-01-02 |
+| [django-rest-framework](https://github.com/encode/django-rest-framework) | 3.14.0     | 2022-11-08 |
+| [django-modelcluster](https://github.com/wagtail/django-modelcluster)    | 6.2.1      | 2024-01-04 |
+| [django-taggit](https://github.com/jazzband/django-taggit)               | 4.0.0      | 2023-05-04 |
+| [django-treebeard](https://github.com/django-treebeard)                  | 4.7.1      | 2024-01-31 |
+| [django-filter](https://github.com/carltongibson/django-filter)          | 23.5       | 2023-12-05 |
+| [beautifulsoup4](https://pypi.org/project/beautifulsoup4)                | 4.12.3     | 2024-01-18 |
+| [Pillow](https://github.com/python-pillow/Pillow)                        | 10.2.0     | 2024-01-02 |
+| [pillow_heif](https://github.com/bigcat88/pillow_heif/tree/master)       | 0.13.1     | 2023-10-15 |
+| [Willow](https://willow.wagtail.org/latest/changelog.html)               | 1.6.3      | 2023-11-26 |
+| [requests](https://github.com/psf/requests)                              | 2.31.0     | 2023-05-22 |
+
+1. Pillow
+   1. [Pillow vs Python](https://pillow.readthedocs.io/en/latest/installation/python-support.html)
+   2. [Pillow vs Platform](https://pillow.readthedocs.io/en/latest/installation/platform-support.html)
+
 References
 ==
 
@@ -108,19 +130,28 @@ CHANGELOG
 1. Django@3.0.14, [2021-04-06](https://docs.djangoproject.com/en/5.1/releases/), claims to support Python@3.9 at v2.2.17, which is not true
 2. PyMySQL@1.0.0, [2021-01-07](https://github.com/PyMySQL/PyMySQL/blob/main/CHANGELOG.md#v100), to replace mysqlclient
 3. Pillow@8.1.2, [2021-03-06](https://github.com/python-pillow/Pillow/blob/main/CHANGES.rst#812-2021-03-06)
-   1. [Pillow vs Python](https://pillow.readthedocs.io/en/latest/installation/python-support.html)
-   2. [Pillow vs Platform](https://pillow.readthedocs.io/en/latest/installation/platform-support.html)
 4. Wagtail@2.11
    1. [SiteMiddleware moved to wagtail.contrib.legacy](https://github.com/wagtail/wagtail/blob/v2.11/docs/releases/2.11.rst#sitemiddleware-moved-to-wagtailcontriblegacy)
 
 3.0.3, 2022-09-05
-==
+--
 
 1. Django@3.2.6, 2022-10-04
 2. drops Django@3.1, Python@3.6
 
 4.1.9, LTS, 2023-10-19
-==
+--
 
 1. Django@4.1.10, 2023-07-03
 2. `ImageChooserPanel` -> `FieldPanel`
+
+5.0.5, 2023-10-19
+--
+
+1. Pillow==9.1.0, Willow==1.5
+2. `wagtail.core` deprecated
+
+5.2.3, LTS, 2024-01-23
+--
+
+1. Django@4.2 强制要求 MySQL@8

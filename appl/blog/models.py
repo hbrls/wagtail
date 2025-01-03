@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from wagtail.core.models import Page
-from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.models import Page
+from wagtail.fields import RichTextField
+from wagtail.admin.panels import FieldPanel
 from wagtail.search import index
 
 
