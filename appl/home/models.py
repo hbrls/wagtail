@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
+import logging
+
 from django.db import models
 from wagtail.models import Page
 from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel
+
+
+_logger = logging.getLogger(__name__)
 
 
 class IndexPage(Page):
@@ -14,6 +19,17 @@ class IndexPage(Page):
     class Meta:
         verbose_name = "PC 首页"
 
+    def get_context(self, request, *args, **kwargs):
+        _logger.debug('IndexPage')
+        _logger.info('IndexPage')
+        _logger.info(_logger.name)
+        _logger.info(_logger.level)
+        _logger.info(_logger.handlers)
+        _logger.warning('IndexPage')
+        _logger.error('IndexPage')
+        _logger.critical('IndexPage')
+        ctx = super().get_context(request, *args, **kwargs)
+        return ctx
 
 class MobileIndexPage(Page):
     # an example of mobile page

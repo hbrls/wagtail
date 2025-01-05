@@ -96,6 +96,46 @@ TEMPLATES = [
 WSGI_APPLICATION = 'appl.wsgi.application'
 
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    'formatters': {
+        'verbose': {
+            'format': '[{asctime}.{msecs:03.0f}] {levelname:<5.5} {process:5d} [{threadName}] --- {name:<40.40} {lineno} : {message}',
+            'style': '{',
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        },
+        "request-verbose": {
+            'format': '[{asctime}.{msecs:03.0f}] --- {name} : {message}',
+            'style': '{',
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+        "request-console": {
+            "class": "logging.StreamHandler",
+            "formatter": "request-verbose",
+        },
+    },
+    "loggers": {
+        'django.server': {
+            'handlers': [ 'request-console' ],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        "": {
+            "handlers": [ "console" ],
+            "level": "INFO",
+            "propagate": True,
+        },
+    },
+}
+
+
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
