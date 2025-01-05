@@ -30,6 +30,6 @@ WORKDIR /var/app
 
 # USER www-data
 
-EXPOSE 3031
+EXPOSE 8080
 
 CMD ["/usr/local/bin/uwsgi", "-y", "/uwsgi.yaml"]
