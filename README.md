@@ -80,6 +80,8 @@ Dependencies
 |--------------------------------------------------------------------------|------------|------------|
 | Wagtail                                                                  | 5.2.3, LTS | 2024-01-23 |
 | Django                                                                   | 4.2.9, LTS | 2024-01-02 |
+| [Pydantic](https://github.com/pydantic/pydantic)                         | 2.5.3      | 2023-12-22 |
+| [Django-Ninja](https://github.com/vitalik/django-ninja)                  | 1.0.1      | 2023-11-17 |
 | [django-rest-framework](https://github.com/encode/django-rest-framework) | 3.14.0     | 2022-11-08 |
 | [django-modelcluster](https://github.com/wagtail/django-modelcluster)    | 6.2.1      | 2024-01-04 |
 | [django-taggit](https://github.com/jazzband/django-taggit)               | 4.0.0      | 2023-05-04 |

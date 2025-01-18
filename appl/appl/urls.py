@@ -9,6 +9,7 @@ from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
+from appl.api import api
 
 
 urlpatterns = [
@@ -20,6 +21,8 @@ urlpatterns = [
     path('search/', search_views.search, name='search'),
 
     path('', include(wagtail_urls)),
+
+    path('', api.urls)
 ]
 
 
