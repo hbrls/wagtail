@@ -1,0 +1,30 @@
+{% load static wagtailuserbar %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {% block vcss %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/vendor/bootstrap.css' %}">
+  {% endblock %}
+
+  {% block css %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  {% block content %}{% endblock %}
+
+  {% block vjs %}
+  <script type="text/javascript" src="{% static 'js/vendor/jquery.js' %}"></script>
+  {% endblock %}
+
+  {% block js %}{% endblock %}
+</body>
+</html>
