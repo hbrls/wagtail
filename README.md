@@ -6,7 +6,25 @@ Wagtail, the opinionated best practice.
 Best Practice
 ==
 
-1.  Change the default home page to our own `~/home/models.IndexPage`.
+1. Initialized database
+
+    ```bash
+    $ mysql> CREATE DATABASE wagtailexample CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+    $ mysql> CREATE USER 'wagtailexample'@'%' IDENTIFIED BY 'wagtailexample';
+    $ mysql> GRANT ALL PRIVILEGES ON wagtailexample.* TO 'wagtailexample'@'%'
+    $ mysql> FLUSH PRIVILEGES;
+    
+    $ wagtail start appl
+    
+    $ python manage.py makemigrations
+    $ python manage.py migrate
+    
+    $ python manage.py createsuperuser  # wagtail:wagtail, wagtail@wagtailexample.com
+    
+    $ python manage.py collectstatic
+    ```
+
+2.  Change the default home page to our own `~/home/models.IndexPage`.
 
     1. 在 `Welcome to wagtail` 下新建 `IndexPage`，然后将它转移到 `Root` 下
     2. 到 "设置 > 站点 > Root Page" 将默认首页设置为 `IndexPage`
@@ -53,3 +71,14 @@ References
 
 CHANGELOG
 ==
+
+1.7 -> 1.12.2 -> 1.13.4
+--
+
+```sql
+ALTER TABLE wagtailexample.wagtailcore_pageviewrestriction ADD restriction_type VARCHAR(20) DEFAULT 'password' NULL;
+ALTER TABLE wagtailexample.wagtailusers_userprofile ADD preferred_language VARCHAR(10) NULL;
+ALTER TABLE wagtailexample.wagtailcore_page ADD last_published_at DATETIME(6) NULL;
+ALTER TABLE wagtailexample.wagtailcore_page ADD live_revision_id INT(11) NULL;
+ALTER TABLE wagtailexample.wagtailcore_page ADD draft_title VARCHAR(255) NULL;
+```
