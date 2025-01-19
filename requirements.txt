@@ -20,7 +20,9 @@ et_xmlfile==2.0.0
 filetype==1.2.0
 html5lib==0.999999999
 idna==2.10
+Jinja2==3.1.2
 l18n==2021.3
+MarkupSafe==2.1.3
 openpyxl==3.1.5
 pillow==10.2.0
 pillow-heif==0.13.1

@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 
-{% load blog_tags wagtailcore_tags wagtailimages_tags %}
-
 {% block body_class %}blog-index{% endblock %}
 
 {% block content %}
-  {% blog_index parent=self calling_page=self %}
+  {% include "tags/blog_index.html" %}
 
   TODO: Blog Index
 {% endblock %}

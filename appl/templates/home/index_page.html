@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 
-{% load home_tags wagtailcore_tags %}
-
 {% block body_class %}home-index{% endblock %}
 
 
 {% block content %}
-  {% get_site_root as site_root %}
-  {% top_menu parent=site_root calling_page=self %}
+
+  {% include "tags/home_top_menu.html" %}
 
   <h1>Hello Home Index</h1>
+
 {% endblock %}
