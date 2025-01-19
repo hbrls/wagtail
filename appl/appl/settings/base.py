@@ -76,6 +76,21 @@ ROOT_URLCONF = 'appl.urls'
 
 TEMPLATES = [
     {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'extensions': [
+                'wagtail.jinja2tags.core',
+                'wagtail.admin.jinja2tags.userbar',
+                'wagtail.images.jinja2tags.images',
+            ],
+            'environment': 'appl.jinja2.environment',
+        },
+    },
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),

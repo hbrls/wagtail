@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
-
 {% block body_class %}blog-article{% endblock %}
 
 {% block content %}
@@ -9,7 +7,7 @@
 <p class="meta">{{ page.date }}</p>
 
 {% if page.main_image %}
-  {% image page.main_image width-400 %}
+  {{ page.main_image }}
 {% endif %}
 
 <div class="intro">{{ page.intro }}</div>

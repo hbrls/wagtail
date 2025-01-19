@@ -1,5 +1,3 @@
-{% load static wagtailuserbar %}
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
@@ -16,10 +14,10 @@
   <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
   <meta name="description" content="" />
 
-  <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ '/static/favicon.ico' }}" type="image/x-icon">
 
   {% block vcss %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/vendor/bootstrap.css' %}">
+  <link rel="stylesheet" type="text/css" href="{{ '/static/css/vendor/bootstrap.css' }}">
   {% endblock %}
 
   {% block css %}{% endblock %}
@@ -28,9 +26,11 @@
   {% block content %}{% endblock %}
 
   {% block vjs %}
-  <script type="text/javascript" src="{% static 'js/vendor/jquery.js' %}"></script>
+  <script type="text/javascript" src="{{ '/static/js/vendor/jquery.js' }}"></script>
   {% endblock %}
 
   {% block js %}{% endblock %}
+
+  {{ wagtailuserbar() }}
 </body>
 </html>

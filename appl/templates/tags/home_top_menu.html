@@ -1,0 +1,31 @@
+{% set site_root = wagtail_site().root_page %}
+{% set menus = home_top_menu(site_root, page) %}
+
+<div class="navbar">
+  <div class="container">
+    <div class="navbar-header">
+      {# Link to home page #}
+      <a href="{{ pageurl(site_root) }}" class="navbar-brand" title="{{ site_root }}">
+        Home <i class="glyphicon glyphicon-home"></i>
+      </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        {% for menu in menus %}
+        <li class="{% if menu.show_dropdown %}dropdown{% endif %}{% if menu.active %} active{% endif %}">
+          {% if menu.show_dropdown %}
+          <a href="{{ pageurl(menu) }}">{{ menu.title }} <i class="caret"></i></a>
+          <ul class="dropdown-menu">
+            {% for submenu in menu.children %}
+            <li><a href="{{ pageurl(submenu) }}">{{ submenu.title }}</a></li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <a href="{{ pageurl(menu) }}">{{ menu.title }}</a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
